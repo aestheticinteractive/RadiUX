@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using RadiUX.Model;
+using RadiUX.Unity.Test;
 using UnityEngine;
 
 namespace RadiUX.Unity {
@@ -26,6 +27,9 @@ namespace RadiUX.Unity {
 			var cam = camHold.AddComponent<Camera>();
 
 			camHold.transform.LookAt(new Vector3(0, 0, 1));
+
+			var squareTest = new SquareTest();
+			squareTest.GameObj.transform.parent = transform;
 		}
 
 

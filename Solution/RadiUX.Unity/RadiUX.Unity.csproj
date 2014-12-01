@@ -39,6 +39,7 @@
   <ItemGroup>
     <Compile Include="RadiuxBehavior.cs" />
     <Compile Include="Shared\UiBase.cs" />
+    <Compile Include="Test\SquareTest.cs" />
     <Compile Include="Util\CachePool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\MathUtil.cs" />

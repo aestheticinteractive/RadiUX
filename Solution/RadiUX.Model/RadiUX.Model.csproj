@@ -39,6 +39,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="MeshData.cs" />
+    <Compile Include="SphereMeshBuilder.cs" />
     <Compile Include="IApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
