@@ -18,24 +18,21 @@ namespace RadiUX.Model {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public MeshData BuildSquareMesh(float pWidthDegrees, float pHeightDegrees) {
-			int stepsW = (int)Math.Max(2, Math.Round(pWidthDegrees*vQuality));
-			int stepsH = (int)Math.Max(2, Math.Round(pHeightDegrees*vQuality));
-			float incW = pWidthDegrees/(stepsW-1);
-			float incH = pHeightDegrees/(stepsH-1);
-			float halfW = pWidthDegrees/2.0f;
-			float halfH = pHeightDegrees/2.0f;
-
+		public MeshData BuildSquareMesh(float pCenterX, float pCenterY, float pWidth, float pHeight) {
+			int stepsW = (int)Math.Max(2, Math.Round(pWidth*vQuality));
+			int stepsH = (int)Math.Max(2, Math.Round(pHeight*vQuality));
+			float incW = pWidth/(stepsW-1);
+			float incH = pHeight/(stepsH-1);
+			float baseX = pCenterX-pWidth/2.0f;
+			float baseY = pCenterY-pHeight/2.0f;
 			var mesh = new MeshData();
-			var rot = Quaternion.FromToRotation(Vector3.up, Vector3.forward)*
-				Quaternion.FromToRotation(Vector3.right, Vector3.up);
 
 			for ( var hi = 0 ; hi < stepsH ; ++hi ) {
 				for ( var wi = 0 ; wi < stepsW ; ++wi ) {
-					Vector3 v = GetPointOnSphere(incW*wi-halfW, incH*hi-halfH+90);
+					Vector3 v = GetPointOnSphere(incW*wi+baseX, incH*hi+baseY);
 					var uv = new Vector2(wi/(float)stepsW, hi/(float)stepsH);
 
-					mesh.Vertices.Add(rot*v);
+					mesh.Vertices.Add(v);
 					mesh.UvCoordinates.Add(uv);
 
 					if ( hi > 0 && wi > 0 ) {

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 using RadiUX.Model;
-using RadiUX.Unity.Test;
+using RadiUX.Unity.Demo;
 using UnityEngine;
 
 namespace RadiUX.Unity {
