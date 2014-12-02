@@ -45,14 +45,19 @@ namespace RadiUX.Unity.Util {
 		/*--------------------------------------------------------------------------------------------*/
 		public static Mesh ToUnityMesh(this MeshData pMeshData) {
 			var m = new Mesh();
-			m.Clear();
-			m.vertices = pMeshData.Vertices.Select(ToUnityVector).ToArray();
-			m.uv = pMeshData.UvCoordinates.Select(ToUnityVector).ToArray();
-			m.triangles = pMeshData.TriangleIndices.ToArray();
-			m.RecalculateNormals();
-			m.RecalculateBounds();
-			m.Optimize();
+			pMeshData.FillUnityMesh(m);
 			return m;
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public static void FillUnityMesh(this MeshData pMeshData, Mesh pMesh) {
+			pMesh.Clear();
+			pMesh.vertices = pMeshData.Vertices.Select(ToUnityVector).ToArray();
+			pMesh.uv = pMeshData.UvCoordinates.Select(ToUnityVector).ToArray();
+			pMesh.triangles = pMeshData.TriangleIndices.ToArray();
+			pMesh.RecalculateNormals();
+			pMesh.RecalculateBounds();
+			pMesh.Optimize();
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

@@ -1,4 +1,6 @@
-﻿namespace RadiUX.Model {
+﻿using System;
+
+namespace RadiUX.Model {
 
 	/*================================================================================================*/
 	public class DegreeBounds {
@@ -20,6 +22,24 @@
 			CenterY = pCenterY;
 			Width = pWidth;
 			Height = pHeight;
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public bool IsSameAs(DegreeBounds pBounds) {
+			if ( pBounds == null ) {
+				return false;
+			}
+
+			const float epsilon = 0.001f;
+
+			return (
+				Math.Abs(CenterX-pBounds.CenterX) < epsilon &&
+				Math.Abs(CenterY-pBounds.CenterY) < epsilon &&
+				Math.Abs(Width-pBounds.Width) < epsilon &&
+				Math.Abs(Height-pBounds.Height) < epsilon
+			);
 		}
 
 

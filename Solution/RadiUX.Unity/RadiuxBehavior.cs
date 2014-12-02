@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using RadiUX.Unity.Demo;
 using UnityEngine;
 
 namespace RadiUX.Unity {
@@ -18,10 +17,6 @@ namespace RadiUX.Unity {
 		/*--------------------------------------------------------------------------------------------*/
 		public void Awake() {
 			vTimer = Stopwatch.StartNew();
-
-			var squareTest = new GameObject("SquareTest");
-			squareTest.AddComponent<SquareTest>();
-			squareTest.transform.parent = transform;
 		}
 
 
