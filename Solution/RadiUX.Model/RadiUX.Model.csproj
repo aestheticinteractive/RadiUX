@@ -35,11 +35,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DegreeBounds.cs" />
-    <Compile Include="Vec2.cs" />
-    <Compile Include="Vec3.cs" />
-    <Compile Include="MeshData.cs" />
-    <Compile Include="SphereMeshBuilder.cs" />
+    <Compile Include="Structures\DegreeBounds.cs" />
+    <Compile Include="Sphere\SphereLayoutData.cs" />
+    <Compile Include="Sphere\SphereSegmentData.cs" />
+    <Compile Include="Structures\Vec2.cs" />
+    <Compile Include="Structures\Vec3.cs" />
+    <Compile Include="Structures\MeshData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

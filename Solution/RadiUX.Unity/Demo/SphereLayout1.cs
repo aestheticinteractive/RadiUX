@@ -1,4 +1,4 @@
-﻿using RadiUX.Model;
+﻿using RadiUX.Model.Sphere;
 using UnityEngine;
 
 namespace RadiUX.Unity.Demo {
@@ -7,13 +7,13 @@ namespace RadiUX.Unity.Demo {
 	[ExecuteInEditMode]
 	public class SphereLayout1 : MonoBehaviour, ISphereLayout {
 
-		public SphereMeshBuilder MeshBuild { get; private set; }
+		public SphereLayoutData Data { get; private set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public SphereLayout1() {
-			MeshBuild = new SphereMeshBuilder(4);
+			Data = new SphereLayoutData(4f, 0.3f);
 		}
 
 	}

@@ -1,25 +1,33 @@
 ﻿using System;
+using RadiUX.Model.Structures;
 
-namespace RadiUX.Model {
+namespace RadiUX.Model.Sphere {
 
 	/*================================================================================================*/
-	public class SphereMeshBuilder {
+	public class SphereLayoutData {
 
-		private readonly float vRadius;
-		private readonly float vQuality;
+		public float Radius { get; set; }
+		public float Quality { get; set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public SphereMeshBuilder(float pRadius) {
-			vRadius = pRadius;
-			vQuality = 0.3f;
+		public SphereLayoutData(float pRadius, float pQuality) {
+			Radius = pRadius;
+			Quality = pQuality;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
+		internal string GetState() {
+			return Radius+"|"+Quality;
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
 		public MeshData GetSquare(DegreeBounds pBounds) {
-			int stepsW = (int)Math.Max(2, Math.Round(pBounds.Width*vQuality));
-			int stepsH = (int)Math.Max(2, Math.Round(pBounds.Height*vQuality));
+			int stepsW = (int)Math.Max(2, Math.Round(pBounds.Width*Quality));
+			int stepsH = (int)Math.Max(2, Math.Round(pBounds.Height*Quality));
 			float incW = pBounds.Width/(stepsW-1);
 			float incH = pBounds.Height/(stepsH-1);
 			float baseX = pBounds.CenterX-pBounds.Width/2.0f;
@@ -57,9 +65,9 @@ namespace RadiUX.Model {
 			float t = (float)(pDegreesDownZ/180.0*Math.PI);
 
 			return new Vec3(
-				(float)(vRadius * Math.Cos(s) * Math.Sin(t)),
-				(float)(vRadius * Math.Sin(s) * Math.Sin(t)),
-				(float)(vRadius * Math.Cos(t))
+				(float)(Radius * Math.Cos(s) * Math.Sin(t)),
+				(float)(Radius * Math.Sin(s) * Math.Sin(t)),
+				(float)(Radius * Math.Cos(t))
 			);
 		}
 

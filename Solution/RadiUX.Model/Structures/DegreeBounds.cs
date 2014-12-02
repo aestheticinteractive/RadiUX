@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RadiUX.Model {
+namespace RadiUX.Model.Structures {
 
 	/*================================================================================================*/
 	public class DegreeBounds {
@@ -22,6 +22,14 @@ namespace RadiUX.Model {
 			CenterY = pCenterY;
 			Width = pWidth;
 			Height = pHeight;
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public DegreeBounds(DegreeBounds pBounds) {
+			CenterX = pBounds.CenterX;
+			CenterY = pBounds.CenterY;
+			Width = pBounds.Width;
+			Height = pBounds.Height;
 		}
 
 

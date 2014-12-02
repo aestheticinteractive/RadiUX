@@ -1,4 +1,4 @@
-﻿namespace RadiUX.Model {
+﻿namespace RadiUX.Model.Structures {
 
 	/*================================================================================================*/
 	public class Vec2 {

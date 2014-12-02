@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using RadiUX.Model;
+using RadiUX.Model.Structures;
 using UnityEngine;
 using Mesh = UnityEngine.Mesh;
 

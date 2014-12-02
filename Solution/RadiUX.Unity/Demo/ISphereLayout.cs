@@ -1,11 +1,11 @@
-﻿using RadiUX.Model;
+﻿using RadiUX.Model.Sphere;
 
 namespace RadiUX.Unity.Demo {
 
 	/*================================================================================================*/
 	public interface ISphereLayout {
 
-		SphereMeshBuilder MeshBuild { get; }
+		SphereLayoutData Data { get; }
 
 	}
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace RadiUX.Model {
+namespace RadiUX.Model.Structures {
 
 	/*================================================================================================*/
 	public class MeshData {
