@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = System.Random;
 
 namespace RadiUX.Unity.Util {
@@ -12,16 +11,6 @@ namespace RadiUX.Unity.Util {
 		/*--------------------------------------------------------------------------------------------*/
 		public static float ClampFloat(float pValue, float pMin, float pMax) {
 			return (pValue < pMin ? pMin : (pValue > pMax ? pMax : pValue));
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public static float GetGravityDist(double pSeconds, float pStartVelocity=0) {
-			return (float)(20*Math.Pow(pSeconds, 2) + pStartVelocity*pSeconds);
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public static Quaternion GetGravityRot(double pSeconds, Vector3 pRandVec) {
-			return Quaternion.AngleAxis((float)pSeconds*10, pRandVec);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

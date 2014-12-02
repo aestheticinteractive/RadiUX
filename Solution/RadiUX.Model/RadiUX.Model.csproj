@@ -35,6 +35,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DegreeBounds.cs" />
     <Compile Include="Vec2.cs" />
     <Compile Include="Vec3.cs" />
     <Compile Include="MeshData.cs" />

@@ -17,14 +17,15 @@ namespace RadiUX.Model {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public MeshData BuildSquareMesh(float pCenterX, float pCenterY, float pWidth, float pHeight) {
-			int stepsW = (int)Math.Max(2, Math.Round(pWidth*vQuality));
-			int stepsH = (int)Math.Max(2, Math.Round(pHeight*vQuality));
-			float incW = pWidth/(stepsW-1);
-			float incH = pHeight/(stepsH-1);
-			float baseX = pCenterX-pWidth/2.0f;
-			float baseY = pCenterY-pHeight/2.0f;
-			var mesh = new MeshData();
+		public MeshData GetSquare(DegreeBounds pBounds) {
+			int stepsW = (int)Math.Max(2, Math.Round(pBounds.Width*vQuality));
+			int stepsH = (int)Math.Max(2, Math.Round(pBounds.Height*vQuality));
+			float incW = pBounds.Width/(stepsW-1);
+			float incH = pBounds.Height/(stepsH-1);
+			float baseX = pBounds.CenterX-pBounds.Width/2.0f;
+			float baseY = pBounds.CenterY-pBounds.Height/2.0f;
+
+			var mesh = new MeshData(pBounds);
 
 			for ( var hi = 0 ; hi < stepsH ; ++hi ) {
 				for ( var wi = 0 ; wi < stepsW ; ++wi ) {

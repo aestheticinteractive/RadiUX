@@ -19,8 +19,9 @@ namespace RadiUX.Unity {
 		public void Awake() {
 			vTimer = Stopwatch.StartNew();
 
-			var squareTest = new SquareTest();
-			squareTest.GameObj.transform.parent = transform;
+			var squareTest = new GameObject("SquareTest");
+			squareTest.AddComponent<SquareTest>();
+			squareTest.transform.parent = transform;
 		}
 
 
