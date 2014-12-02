@@ -1,5 +1,4 @@
-﻿using RadiUX.Model;
-using RadiUX.Model.Sphere;
+﻿using RadiUX.Model.Sphere;
 using RadiUX.Model.Structures;
 using RadiUX.Unity.Util;
 using UnityEngine;
@@ -32,13 +31,12 @@ namespace RadiUX.Unity.Demo {
 		/*--------------------------------------------------------------------------------------------*/
 		public void Start() {
 			var meshFilt = gameObject.GetComponent<MeshFilter>();
-			var meshRend = gameObject.GetComponent<MeshRenderer>();
 
 			if ( meshFilt == null ) {
 				meshFilt = gameObject.AddComponent<MeshFilter>();
 			}
 
-			if ( meshRend == null ) {
+			if ( gameObject.GetComponent<MeshRenderer>() == null ) {
 				gameObject.AddComponent<MeshRenderer>();
 			}
 
