@@ -33,15 +33,12 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\Packages\Unity\UnityEngine.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
+    <Compile Include="Vec2.cs" />
+    <Compile Include="Vec3.cs" />
     <Compile Include="MeshData.cs" />
     <Compile Include="SphereMeshBuilder.cs" />
-    <Compile Include="IApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

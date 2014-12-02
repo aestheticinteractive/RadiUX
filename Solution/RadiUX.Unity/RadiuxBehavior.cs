@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using RadiUX.Model;
 using RadiUX.Unity.Demo;
 using UnityEngine;
 
@@ -7,8 +6,6 @@ namespace RadiUX.Unity {
 
 	/*================================================================================================*/
 	public class RadiuxBehavior : MonoBehaviour {
-
-		private App vApp;
 
 		private Stopwatch vTimer;
 		private int vFrameCount;
@@ -20,13 +17,7 @@ namespace RadiUX.Unity {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public void Awake() {
-			vApp = new App();
 			vTimer = Stopwatch.StartNew();
-
-			var camHold = new GameObject("Camera");
-			var cam = camHold.AddComponent<Camera>();
-
-			camHold.transform.LookAt(new Vector3(0, 0, 1));
 
 			var squareTest = new SquareTest();
 			squareTest.GameObj.transform.parent = transform;
@@ -78,8 +69,6 @@ namespace RadiUX.Unity {
 			if ( !enabled ) {
 				return;
 			}
-
-			vApp.Destroy();
 		}
 
 	}

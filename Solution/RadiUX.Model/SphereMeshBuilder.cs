@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace RadiUX.Model {
 
@@ -29,8 +28,8 @@ namespace RadiUX.Model {
 
 			for ( var hi = 0 ; hi < stepsH ; ++hi ) {
 				for ( var wi = 0 ; wi < stepsW ; ++wi ) {
-					Vector3 v = GetPointOnSphere(incW*wi+baseX, incH*hi+baseY);
-					var uv = new Vector2(wi/(float)stepsW, hi/(float)stepsH);
+					Vec3 v = GetPointOnSphere(incW*wi+baseX, incH*hi+baseY);
+					var uv = new Vec2(wi/(float)stepsW, hi/(float)stepsH);
 
 					mesh.Vertices.Add(v);
 					mesh.UvCoordinates.Add(uv);
@@ -52,11 +51,11 @@ namespace RadiUX.Model {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private Vector3 GetPointOnSphere(float pDegreesAboutZ, float pDegreesDownZ) {
+		private Vec3 GetPointOnSphere(float pDegreesAboutZ, float pDegreesDownZ) {
 			float s = (float)(pDegreesAboutZ/180.0*Math.PI);
 			float t = (float)(pDegreesDownZ/180.0*Math.PI);
 
-			return new Vector3(
+			return new Vec3(
 				(float)(vRadius * Math.Cos(s) * Math.Sin(t)),
 				(float)(vRadius * Math.Sin(s) * Math.Sin(t)),
 				(float)(vRadius * Math.Cos(t))
