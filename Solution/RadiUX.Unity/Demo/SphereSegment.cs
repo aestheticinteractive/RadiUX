@@ -1,4 +1,5 @@
-﻿using RadiUX.Model.Sphere;
+﻿using System;
+using RadiUX.Model.Sphere;
 using RadiUX.Model.Structures;
 using RadiUX.Unity.Util;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace RadiUX.Unity.Demo {
 		private readonly SphereSegmentData vData;
 
 		private ISphereLayout vLayout;
+		private ISphereContainer vContain;
 		private Mesh vMesh;
 
 
@@ -44,37 +46,36 @@ namespace RadiUX.Unity.Demo {
 			vMesh.hideFlags = HideFlags.DontSave;
 			meshFilt.sharedMesh = vMesh;
 
-			FindLayout();
+			////
+
+			vLayout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
+			vContain = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
+
+			if ( vLayout == null ) {
+				throw new Exception("This element must be contained within an ISphereLayout.");
+			}
+
+			vData.Layout = vLayout.Data;
+
+			if ( vContain != null ) {
+				vData.Container = vContain.Data;
+			}
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private bool FindLayout() {
-			Transform par = gameObject.transform.parent;
+		private void FindLayout() {
+			
+		}
 
-			while ( par != null ) {
-				vLayout = (par.GetComponent(typeof(ISphereLayout)) as ISphereLayout);
-
-				if ( vLayout != null ) {
-					return true;
-				}
-
-				par = par.parent;
-			}
-
-			Debug.LogError("This element must be a child of a GameObject with an ISphereLayout.");
-			return false;
+		/*--------------------------------------------------------------------------------------------*/
+		private void FindContainer() {
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public void Update() {
-			if ( vLayout == null && !FindLayout() ) {
-				return;
-			}
-
 			vData.Bounds = new DegreeBounds(CenterX, CenterY, Width, Height);
-			vData.Layout = vLayout.Data;
 
 			if ( vData.RebuildMeshDataIfNecessary() ) {
 				vData.MeshData.FillUnityMesh(vMesh);

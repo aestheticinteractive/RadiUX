@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using RadiUX.Model;
 using RadiUX.Model.Structures;
 using UnityEngine;
@@ -20,25 +21,44 @@ namespace RadiUX.Unity.Util {
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		public static GameObject CreateNonCollisionQuad() {
 			GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Quad);
 			Object.Destroy(obj.GetComponent<MeshCollider>());
 			return obj;
 		}
 
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		public static void SetLayerForHierarchy(GameObject pObj, int pLayer) {
 			foreach ( Transform t in pObj.GetComponentsInChildren<Transform>(true) ) {
 				t.gameObject.layer = pLayer;
 			}
 		}
 
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		public static void SetSharedMaterialForHierarchy(GameObject pObj, Material pMaterial) {
 			foreach ( MeshRenderer r in pObj.GetComponentsInChildren<MeshRenderer>(true) ) {
 				r.sharedMaterial = pMaterial;
 			}
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public static T FindParentComponent<T>(GameObject pGameObj) {
+			Transform par = pGameObj.transform.parent;
+
+			while ( par != null ) {
+				object comp = par.GetComponent(typeof(T));
+
+				if ( comp != null ) {
+					return (T)comp;
+				}
+
+				par = par.parent;
+			}
+
+			return default(T);
 		}
 
 

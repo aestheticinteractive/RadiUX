@@ -8,10 +8,11 @@ namespace RadiUX.Model.Sphere {
 
 		public DegreeBounds Bounds { get; set; }
 		public SphereLayoutData Layout { get; set; }
+		public SphereContainerData Container { get; set; }
 		public MeshData MeshData { get; set; }
 
 		private DegreeBounds vCurrBounds;
-		private string vCurrLayoutState;
+		private string vCurrState;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -25,16 +26,24 @@ namespace RadiUX.Model.Sphere {
 				throw new ArgumentNullException("Layout");
 			}
 
-			string layoutState = Layout.GetState();
+			string state = Layout.GetState();
 
-			if ( Bounds.IsSameAs(vCurrBounds) && layoutState == vCurrLayoutState ) {
+			if ( Container != null ) {
+				state += "*"+Container.GetState();
+			}
+
+			if ( Bounds.IsSameAs(vCurrBounds) && state == vCurrState ) {
 				return false;
 			}
 
 			vCurrBounds = new DegreeBounds(Bounds);
-			vCurrLayoutState = layoutState;
+			vCurrState = state;
 
-			MeshData = Layout.GetSquare(Bounds);
+			float contX = Container.CalculateCenterX();
+			float contY = Container.CalculateCenterY();
+			DegreeBounds b = Bounds.NewOffsetCenter(contX, contY);
+
+			MeshData = Layout.GetSquare(b);
 			return true;
 		}
 

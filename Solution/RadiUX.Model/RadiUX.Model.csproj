@@ -35,6 +35,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sphere\SphereContainerData.cs" />
     <Compile Include="Structures\DegreeBounds.cs" />
     <Compile Include="Sphere\SphereLayoutData.cs" />
     <Compile Include="Sphere\SphereSegmentData.cs" />
