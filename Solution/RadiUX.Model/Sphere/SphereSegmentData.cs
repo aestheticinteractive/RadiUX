@@ -29,7 +29,7 @@ namespace RadiUX.Model.Sphere {
 			string state = Layout.GetState();
 
 			if ( Container != null ) {
-				state += "*"+Container.GetState();
+				state += "|"+Container.GetState();
 			}
 
 			if ( Bounds.IsSameAs(vCurrBounds) && state == vCurrState ) {

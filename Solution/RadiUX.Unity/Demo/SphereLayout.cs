@@ -8,7 +8,7 @@ namespace RadiUX.Unity.Demo {
 	public class SphereLayout : MonoBehaviour, ISphereLayout {
 
 		public float Radius = 4;
-		public float Quality = 0.333f;
+		public float Quality = 0.3f;
 
 		public SphereLayoutData Data { get; private set; }
 

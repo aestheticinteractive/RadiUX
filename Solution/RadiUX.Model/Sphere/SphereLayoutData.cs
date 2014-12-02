@@ -19,7 +19,7 @@ namespace RadiUX.Model.Sphere {
 
 		/*--------------------------------------------------------------------------------------------*/
 		internal string GetState() {
-			return Radius+"|"+Quality;
+			return Radius+","+Quality;
 		}
 
 

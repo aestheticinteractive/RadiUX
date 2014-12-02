@@ -65,7 +65,7 @@ namespace RadiUX.Unity.Demo {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void Update() {
+		public void LateUpdate() {
 			vData.Bounds = new DegreeBounds(CenterX, CenterY, Width, Height);
 
 			if ( vData.RebuildMeshDataIfNecessary() ) {
