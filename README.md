@@ -1,4 +1,4 @@
-FragmentalLeap
+RadiUX
 ==============
 
-Fragmental 3D for Leap Motion, built with Unity/C#.
+Initial development work in progress. More details coming soon!
