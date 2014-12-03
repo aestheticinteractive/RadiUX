@@ -12,6 +12,7 @@ namespace RadiUX.Unity.Demo {
 
 		public float CenterX = 0;
 		public float CenterY = 0;
+		public float CenterZ = 0;
 		public float Width = 10;
 		public float Height = 10;
 
@@ -66,16 +67,18 @@ namespace RadiUX.Unity.Demo {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual void Update() {
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public virtual void LateUpdate() {
 			FindParentsIfNecessary();
 
 			if ( vLayout == null ) {
 				throw new Exception("This element must be contained within an ISphereLayout.");
 			}
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public virtual void LateUpdate() {
-			vData.Bounds = new DegreeBounds(CenterX, CenterY, Width, Height);
+
+			var center = new Vec3(CenterX, CenterY, CenterZ);
+			vData.Bounds = new DegreeBounds(center, Width, Height);
 
 			if ( vData.RebuildMeshDataIfNecessary() ) {
 				vData.MeshData.FillUnityMesh(vMesh);

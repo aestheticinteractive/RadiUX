@@ -5,8 +5,7 @@ namespace RadiUX.Model.Structures {
 	/*================================================================================================*/
 	public class DegreeBounds {
 
-		public float CenterX { get; set; }
-		public float CenterY { get; set; }
+		public Vec3 Center { get; set; }
 		public float Width { get; set; }
 		public float Height { get; set; }
 
@@ -14,20 +13,19 @@ namespace RadiUX.Model.Structures {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public DegreeBounds() {
+			Center = new Vec3();
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public DegreeBounds(float pCenterX, float pCenterY, float pWidth, float pHeight) {
-			CenterX = pCenterX;
-			CenterY = pCenterY;
+		public DegreeBounds(Vec3 pCenter, float pWidth, float pHeight) {
+			Center = pCenter.Clone();
 			Width = pWidth;
 			Height = pHeight;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public DegreeBounds(DegreeBounds pBounds) {
-			CenterX = pBounds.CenterX;
-			CenterY = pBounds.CenterY;
+			Center = pBounds.Center.Clone();
 			Width = pBounds.Width;
 			Height = pBounds.Height;
 		}
@@ -43,8 +41,9 @@ namespace RadiUX.Model.Structures {
 			const float epsilon = 0.001f;
 
 			return (
-				Math.Abs(CenterX-pBounds.CenterX) < epsilon &&
-				Math.Abs(CenterY-pBounds.CenterY) < epsilon &&
+				Math.Abs(Center.X-pBounds.Center.X) < epsilon &&
+				Math.Abs(Center.Y-pBounds.Center.Y) < epsilon &&
+				Math.Abs(Center.Z-pBounds.Center.Z) < epsilon &&
 				Math.Abs(Width-pBounds.Width) < epsilon &&
 				Math.Abs(Height-pBounds.Height) < epsilon
 			);
@@ -53,10 +52,9 @@ namespace RadiUX.Model.Structures {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public DegreeBounds NewOffsetCenter(float pCenterXDiff, float pCenterYDiff) {
+		public DegreeBounds NewOffsetCenter(Vec3 pOffset) {
 			return new DegreeBounds(
-				CenterX+pCenterXDiff,
-				CenterY+pCenterYDiff,
+				Center+pOffset,
 				Width,
 				Height
 			);
@@ -65,8 +63,7 @@ namespace RadiUX.Model.Structures {
 		/*--------------------------------------------------------------------------------------------*/
 		public DegreeBounds NewResized(float pWidth, float pHeight) {
 			return new DegreeBounds(
-				CenterX,
-				CenterY,
+				Center.Clone(),
 				pWidth,
 				pHeight
 			);

@@ -30,14 +30,15 @@ namespace RadiUX.Model.Sphere {
 			int stepsH = (int)Math.Max(2, Math.Round(pBounds.Height*Quality));
 			float incW = pBounds.Width/(stepsW-1);
 			float incH = pBounds.Height/(stepsH-1);
-			float baseX = pBounds.CenterX-pBounds.Width/2.0f;
-			float baseY = pBounds.CenterY-pBounds.Height/2.0f;
+			float baseX = pBounds.Center.X-pBounds.Width/2.0f;
+			float baseY = pBounds.Center.Y-pBounds.Height/2.0f;
+			float baseZ = Radius + pBounds.Center.Z;
 
 			var mesh = new MeshData(pBounds);
 
 			for ( var hi = 0 ; hi < stepsH ; ++hi ) {
 				for ( var wi = 0 ; wi < stepsW ; ++wi ) {
-					Vec3 v = GetPointOnSphere(incW*wi+baseX, incH*hi+baseY);
+					Vec3 v = GetPointOnSphere(incW*wi+baseX, incH*hi+baseY, baseZ);
 					var uv = new Vec2(wi/(float)stepsW, hi/(float)stepsH);
 
 					mesh.Vertices.Add(v);
@@ -60,14 +61,14 @@ namespace RadiUX.Model.Sphere {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		private Vec3 GetPointOnSphere(float pDegreesAboutZ, float pDegreesDownZ) {
-			float s = (float)(pDegreesAboutZ/180.0*Math.PI);
-			float t = (float)(pDegreesDownZ/180.0*Math.PI);
+		private static Vec3 GetPointOnSphere(float pHorizDeg, float pVertDeg, float pRadius) {
+			float s = (float)(pHorizDeg/180.0*Math.PI);
+			float t = (float)(pVertDeg/180.0*Math.PI);
 
 			return new Vec3(
-				(float)(Radius * Math.Cos(s) * Math.Sin(t)),
-				(float)(Radius * Math.Sin(s) * Math.Sin(t)),
-				(float)(Radius * Math.Cos(t))
+				(float)(pRadius * Math.Cos(s) * Math.Sin(t)),
+				(float)(pRadius * Math.Sin(s) * Math.Sin(t)),
+				(float)(pRadius * Math.Cos(t))
 			);
 		}
 

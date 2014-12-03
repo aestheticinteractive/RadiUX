@@ -11,6 +11,7 @@ namespace RadiUX.Unity.Demo {
 
 		public float CenterX = 0;
 		public float CenterY = 0;
+		public float CenterZ = 0;
 
 		public SphereContainerData Data { get; private set; }
 
@@ -55,6 +56,7 @@ namespace RadiUX.Unity.Demo {
 
 			Data.CenterX = CenterX;
 			Data.CenterY = CenterY;
+			Data.CenterZ = CenterZ;
 		}
 
 	}

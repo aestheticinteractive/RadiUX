@@ -38,10 +38,13 @@ namespace RadiUX.Model.Sphere {
 
 			vCurrBounds = new DegreeBounds(Bounds);
 			vCurrState = state;
+			
+			DegreeBounds b = Bounds;
 
-			float contX = Container.CalculateCenterX();
-			float contY = Container.CalculateCenterY();
-			DegreeBounds b = Bounds.NewOffsetCenter(contX, contY);
+			if ( Container != null ) {
+				Vec3 cont = Container.CalculateCenter();
+				b = b.NewOffsetCenter(cont);
+			}
 
 			MeshData = Layout.GetSquare(b);
 			return true;
