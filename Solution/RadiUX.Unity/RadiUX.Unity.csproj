@@ -40,6 +40,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Demo\SphereButtonEditor.cs" />
     <Compile Include="Demo\SphereButton.cs" />
     <Compile Include="Demo\SphereContainerEditor.cs" />
     <Compile Include="Demo\ISphereContainer.cs" />
