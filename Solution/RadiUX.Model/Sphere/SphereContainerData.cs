@@ -18,7 +18,7 @@ namespace RadiUX.Model.Sphere {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		internal string GetState() {
+		internal virtual string GetState() {
 			return (Parent == null ? "" : Parent.GetState()+"|")+Center.X+","+Center.Y+","+Center.Z;
 		}
 

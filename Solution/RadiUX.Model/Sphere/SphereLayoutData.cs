@@ -4,7 +4,7 @@ using RadiUX.Model.Structures;
 namespace RadiUX.Model.Sphere {
 
 	/*================================================================================================*/
-	public class SphereLayoutData {
+	public class SphereLayoutData : SphereContainerData {
 
 		public float Radius { get; set; }
 		public float Quality { get; set; }
@@ -18,8 +18,8 @@ namespace RadiUX.Model.Sphere {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		internal string GetState() {
-			return Radius+","+Quality;
+		internal override string GetState() {
+			return Radius+","+Quality+","+base.GetState();
 		}
 
 

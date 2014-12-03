@@ -25,6 +25,11 @@ namespace RadiUX.Unity.Demo {
 			Data = new SphereContainerData();
 		}
 
+		/*--------------------------------------------------------------------------------------------*/
+		protected virtual bool IsLayout() {
+			return false;
+		}
+
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
@@ -33,7 +38,7 @@ namespace RadiUX.Unity.Demo {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		private void FindParentsIfNecessary() {
+		protected virtual void FindParentsIfNecessary() {
 			if ( Application.isPlaying && vLayout != null ) {
 				return;
 			}
@@ -47,10 +52,10 @@ namespace RadiUX.Unity.Demo {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void Update() {
+		public virtual void Update() {
 			FindParentsIfNecessary();
 
-			if ( vLayout == null ) {
+			if ( vLayout == null && !IsLayout() ) {
 				throw new Exception("This element must be contained within an ISphereLayout.");
 			}
 

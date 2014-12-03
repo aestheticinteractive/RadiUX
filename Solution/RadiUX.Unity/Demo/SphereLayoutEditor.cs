@@ -5,26 +5,29 @@ namespace RadiUX.Unity.Demo {
 
 	/*================================================================================================*/
 	[CustomEditor(typeof(SphereLayout))]
-	public class SphereLayoutEditor : Editor {
+	public class SphereLayoutEditor : SphereContainerEditor {
 
-		private SphereLayout vItem;
+		private SphereLayout vLayout;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void OnEnable() {
-			vItem = (SphereLayout)target;
+		public override void OnEnable() {
+			base.OnEnable();
+			vLayout = (SphereLayout)target;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
-			Undo.RecordObject(vItem, vItem.GetType().Name);
+			base.OnInspectorGUI();
 
-			vItem.Radius = EditorGUILayout.Slider("Radius", vItem.Radius, 1f, 10f);
-			vItem.Quality = EditorGUILayout.Slider("Quality", vItem.Quality, 0.1f, 2f);
+			Undo.RecordObject(vLayout, vLayout.GetType().Name);
+
+			vLayout.Radius = EditorGUILayout.Slider("Radius", vLayout.Radius, 1f, 10f);
+			vLayout.Quality = EditorGUILayout.Slider("Quality", vLayout.Quality, 0.1f, 2f);
 
 			if ( GUI.changed ) {
-				EditorUtility.SetDirty(vItem);
+				EditorUtility.SetDirty(vLayout);
 			}
 		}
 

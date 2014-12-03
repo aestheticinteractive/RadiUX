@@ -5,12 +5,12 @@ namespace RadiUX.Unity.Demo {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereLayout : MonoBehaviour, ISphereLayout {
+	public class SphereLayout : SphereContainer, ISphereLayout {
 
 		public float Radius = 4;
 		public float Quality = 0.3f;
 
-		public SphereLayoutData Data { get; private set; }
+		public new SphereLayoutData Data { get; private set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -22,7 +22,20 @@ namespace RadiUX.Unity.Demo {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void Update() {
+		protected override bool IsLayout() {
+			return true;
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		protected override void FindParentsIfNecessary() {
+			//do nothing
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public override void Update() {
+			base.Update();
 			Data.Radius = Radius;
 			Data.Quality = Quality;
 		}
