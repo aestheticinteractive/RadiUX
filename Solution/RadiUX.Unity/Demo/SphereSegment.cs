@@ -11,7 +11,7 @@ namespace RadiUX.Unity.Demo {
 	public class SphereSegment : MonoBehaviour {
 
 		public float CenterX = 0;
-		public float CenterY = 90;
+		public float CenterY = 0;
 		public float Width = 10;
 		public float Height = 10;
 
@@ -31,8 +31,8 @@ namespace RadiUX.Unity.Demo {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void Start() {
-			var meshFilt = gameObject.GetComponent<MeshFilter>();
+		public virtual void Start() {
+			MeshFilter meshFilt = gameObject.GetComponent<MeshFilter>();
 
 			if ( meshFilt == null ) {
 				meshFilt = gameObject.AddComponent<MeshFilter>();
@@ -41,7 +41,7 @@ namespace RadiUX.Unity.Demo {
 			if ( gameObject.GetComponent<MeshRenderer>() == null ) {
 				gameObject.AddComponent<MeshRenderer>();
 			}
-
+			
 			vMesh = new Mesh();
 			vMesh.hideFlags = HideFlags.DontSave;
 			meshFilt.sharedMesh = vMesh;
@@ -65,7 +65,7 @@ namespace RadiUX.Unity.Demo {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public void Update() {
+		public virtual void Update() {
 			FindParentsIfNecessary();
 
 			if ( vLayout == null ) {
@@ -74,12 +74,17 @@ namespace RadiUX.Unity.Demo {
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		public void LateUpdate() {
+		public virtual void LateUpdate() {
 			vData.Bounds = new DegreeBounds(CenterX, CenterY, Width, Height);
 
 			if ( vData.RebuildMeshDataIfNecessary() ) {
 				vData.MeshData.FillUnityMesh(vMesh);
+				AfterMeshUpdate();
 			}
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		protected virtual void AfterMeshUpdate() {
 		}
 
 	}
