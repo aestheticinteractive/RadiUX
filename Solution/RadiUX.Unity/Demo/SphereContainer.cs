@@ -34,7 +34,7 @@ namespace RadiUX.Unity.Demo {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private void FindParentsIfNecessary() {
-			if ( vLayout != null ) {
+			if ( Application.isPlaying && vLayout != null ) {
 				return;
 			}
 
