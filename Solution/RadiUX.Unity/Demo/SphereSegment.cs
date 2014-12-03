@@ -46,24 +46,33 @@ namespace RadiUX.Unity.Demo {
 			vMesh.hideFlags = HideFlags.DontSave;
 			meshFilt.sharedMesh = vMesh;
 
-			////
+			FindParentsIfNecessary();
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private void FindParentsIfNecessary() {
+			if ( vLayout != null ) {
+				return;
+			}
 
 			vLayout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
 			vContain = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
 
-			if ( vLayout == null ) {
-				throw new Exception("This element must be contained within an ISphereLayout.");
-			}
-
-			vData.Layout = vLayout.Data;
-
-			if ( vContain != null ) {
-				vData.Container = vContain.Data;
-			}
+			vData.Layout = (vLayout == null ? null : vLayout.Data);
+			vData.Container = (vContain == null ? null : vContain.Data);
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public void Update() {
+			FindParentsIfNecessary();
+
+			if ( vLayout == null ) {
+				throw new Exception("This element must be contained within an ISphereLayout.");
+			}
+		}
+		
 		/*--------------------------------------------------------------------------------------------*/
 		public void LateUpdate() {
 			vData.Bounds = new DegreeBounds(CenterX, CenterY, Width, Height);

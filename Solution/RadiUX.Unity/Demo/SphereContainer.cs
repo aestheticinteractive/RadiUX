@@ -1,4 +1,5 @@
-﻿using RadiUX.Model.Sphere;
+﻿using System;
+using RadiUX.Model.Sphere;
 using RadiUX.Unity.Util;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace RadiUX.Unity.Demo {
 
 		public SphereContainerData Data { get; private set; }
 
+		private ISphereLayout vLayout;
 		private ISphereContainer vContain;
 
 
@@ -26,15 +28,31 @@ namespace RadiUX.Unity.Demo {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public void Start() {
+			FindParentsIfNecessary();
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		private void FindParentsIfNecessary() {
+			if ( vLayout != null ) {
+				return;
+			}
+
+			vLayout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
 			vContain = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
 
-			if ( vContain != null ) {
-				Data.Parent = vContain.Data;
-			}
+			Data.Parent = (vContain == null ? null : vContain.Data);
 		}
-		
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public void Update() {
+			FindParentsIfNecessary();
+
+			if ( vLayout == null ) {
+				throw new Exception("This element must be contained within an ISphereLayout.");
+			}
+
 			Data.CenterX = CenterX;
 			Data.CenterY = CenterY;
 		}
