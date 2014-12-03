@@ -54,9 +54,9 @@ namespace RadiUX.Unity.Demo {
 				throw new Exception("This element must be contained within an ISphereLayout.");
 			}
 
-			Data.CenterX = CenterX;
-			Data.CenterY = CenterY;
-			Data.CenterZ = CenterZ;
+			Data.Center.X = CenterX;
+			Data.Center.Y = CenterY;
+			Data.Center.Z = CenterZ;
 		}
 
 	}

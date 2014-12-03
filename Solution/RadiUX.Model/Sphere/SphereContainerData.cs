@@ -6,20 +6,25 @@ namespace RadiUX.Model.Sphere {
 	public class SphereContainerData {
 
 		public SphereContainerData Parent { get; set; }
-		public float CenterX { get; set; }
-		public float CenterY { get; set; }
-		public float CenterZ { get; set; }
+		public Vec3 Center { get; set; }
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public SphereContainerData() {
+			Center = new Vec3();
+		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		internal string GetState() {
-			return (Parent == null ? "" : Parent.GetState()+"|")+CenterX+","+CenterY+","+CenterZ;
+			return (Parent == null ? "" : Parent.GetState()+"|")+Center.X+","+Center.Y+","+Center.Z;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		internal Vec3 CalculateCenter() {
-			var center = new Vec3(CenterX, CenterY, CenterZ);
+			var center = Center.Clone();
 
 			if ( Parent != null ) {
 				center += Parent.CalculateCenter();
