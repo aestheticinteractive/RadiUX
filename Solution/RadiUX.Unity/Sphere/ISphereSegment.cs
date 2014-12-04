@@ -1,11 +1,8 @@
-﻿using RadiUX.Model.Sphere;
-
-namespace RadiUX.Unity.Sphere {
+﻿namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
-	public interface ISphereContainer {
+	public interface ISphereSegment {
 
-		SphereContainerData Data { get; }
 		ISphereLayout Layout { get; }
 		ISphereContainer Container { get; }
 

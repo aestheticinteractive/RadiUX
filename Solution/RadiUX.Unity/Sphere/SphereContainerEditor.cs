@@ -7,25 +7,23 @@ namespace RadiUX.Unity.Sphere {
 	[CustomEditor(typeof(SphereContainer))]
 	public class SphereContainerEditor : Editor {
 
-		private SphereContainer vItem;
+		private SphereContainer vContain;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual void OnEnable() {
-			vItem = (SphereContainer)target;
+			vContain = (SphereContainer)target;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
-			Undo.RecordObject(vItem, vItem.GetType().Name);
+			Undo.RecordObject(vContain, vContain.GetType().Name);
 
-			vItem.CenterX = EditorGUILayout.Slider("Center X", vItem.CenterX, -180f, 180f);
-			vItem.CenterY = EditorGUILayout.Slider("Center Y", vItem.CenterY, -180f, 180f);
-			vItem.CenterZ = EditorGUILayout.Slider("Center Z", vItem.CenterZ, -10f, 10f);
+			vContain.Center = EditorGUILayout.Vector3Field("Center", vContain.Center);
 
 			if ( GUI.changed ) {
-				EditorUtility.SetDirty(vItem);
+				EditorUtility.SetDirty(vContain);
 			}
 		}
 

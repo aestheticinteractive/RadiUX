@@ -45,6 +45,17 @@ namespace RadiUX.Unity.Util {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
+		public static T FindSiblingComponent<T>(GameObject pGameObj) {
+			object comp = pGameObj.GetComponent(typeof(T));
+
+			if ( comp != null ) {
+				return (T)comp;
+			}
+
+			return default(T);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
 		public static T FindParentComponent<T>(GameObject pGameObj) {
 			Transform par = pGameObj.transform.parent;
 
@@ -89,6 +100,16 @@ namespace RadiUX.Unity.Util {
 		/*--------------------------------------------------------------------------------------------*/
 		public static Vector3 ToUnityVector(this Vec3 pVec) {
 			return new Vector3(pVec.X, pVec.Y, pVec.Z);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public static Vec2 ToRadiuxVector(this Vector2 pVector) {
+			return new Vec2(pVector.x, pVector.y);
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public static Vec3 ToRadiuxVector(this Vector3 pVector) {
+			return new Vec3(pVector.x, pVector.y, pVector.z);
 		}
 
 	}

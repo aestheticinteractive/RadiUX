@@ -8,18 +8,16 @@ namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereSegment : MonoBehaviour {
+	public class SphereSegment : MonoBehaviour, ISphereSegment {
 
-		public float CenterX = 0;
-		public float CenterY = 0;
-		public float CenterZ = 0;
+		public Vector3 Center;
 		public float Width = 10;
 		public float Height = 10;
 
-		private readonly SphereSegmentData vData;
+		public ISphereLayout Layout { get; private set; }
+		public ISphereContainer Container { get; private set; }
 
-		private ISphereLayout vLayout;
-		private ISphereContainer vContain;
+		private readonly SphereSegmentData vData;
 		private Mesh vMesh;
 
 
@@ -42,7 +40,7 @@ namespace RadiUX.Unity.Sphere {
 			if ( gameObject.GetComponent<MeshRenderer>() == null ) {
 				gameObject.AddComponent<MeshRenderer>();
 			}
-			
+
 			vMesh = new Mesh();
 			vMesh.hideFlags = HideFlags.DontSave;
 			meshFilt.sharedMesh = vMesh;
@@ -52,15 +50,15 @@ namespace RadiUX.Unity.Sphere {
 
 		/*--------------------------------------------------------------------------------------------*/
 		private void FindParentsIfNecessary() {
-			if ( Application.isPlaying && vLayout != null ) {
+			if ( Application.isPlaying && Layout != null ) {
 				return;
 			}
 
-			vLayout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
-			vContain = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
+			Layout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
+			Container = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
 
-			vData.Layout = (vLayout == null ? null : vLayout.Data);
-			vData.Container = (vContain == null ? null : vContain.Data);
+			vData.Layout = (Layout == null ? null : Layout.Data);
+			vData.Container = (Container == null ? null : Container.Data);
 		}
 
 
@@ -73,12 +71,11 @@ namespace RadiUX.Unity.Sphere {
 		public virtual void LateUpdate() {
 			FindParentsIfNecessary();
 
-			if ( vLayout == null ) {
+			if ( Layout == null ) {
 				throw new Exception("This element must be contained within an ISphereLayout.");
 			}
 
-			var center = new Vec3(CenterX, CenterY, CenterZ);
-			vData.Bounds = new DegreeBounds(center, Width, Height);
+			vData.Bounds = new DegreeBounds(Center.ToRadiuxVector(), Width, Height);
 
 			if ( vData.RebuildMeshDataIfNecessary() ) {
 				vData.MeshData.FillUnityMesh(vMesh);

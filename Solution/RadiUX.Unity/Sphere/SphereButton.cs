@@ -39,8 +39,9 @@ namespace RadiUX.Unity.Sphere {
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected override void AfterMeshUpdate() {
-			gameObject.GetComponent<MeshCollider>().sharedMesh = 
-				gameObject.GetComponent<MeshFilter>().sharedMesh;
+			MeshCollider mc = gameObject.GetComponent<MeshCollider>();
+			mc.sharedMesh = null;
+			mc.sharedMesh = gameObject.GetComponent<MeshFilter>().sharedMesh;
 		}
 		
 

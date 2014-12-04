@@ -10,13 +10,25 @@ namespace RadiUX.Unity.Sphere {
 		public float Radius = 4;
 		public float Quality = 0.3f;
 
-		public new SphereLayoutData Data { get; private set; }
+		public new SphereLayoutData Data {
+			get {
+				return (SphereLayoutData)base.Data;
+			}
+		}
+
+		public bool IsSpinning { get; set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public SphereLayout() {
-			Data = new SphereLayoutData(Radius, Quality);
+		public SphereLayout() : base(new SphereLayoutData(0, 0)) {
+			Data.Radius = Radius;
+			Data.Quality = Quality;
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		public void SetCenter(Vector3 pCenter) {
+			Center = pCenter;
 		}
 
 

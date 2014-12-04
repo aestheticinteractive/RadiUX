@@ -9,20 +9,25 @@ namespace RadiUX.Unity.Sphere {
 	[ExecuteInEditMode]
 	public class SphereContainer : MonoBehaviour, ISphereContainer {
 
-		public float CenterX = 0;
-		public float CenterY = 0;
-		public float CenterZ = 0;
+		public Vector3 Center;
+		public float CenterX;
+		public float CenterY;
+		public float CenterZ;
 
 		public SphereContainerData Data { get; private set; }
-
-		private ISphereLayout vLayout;
-		private ISphereContainer vContain;
+		public ISphereLayout Layout { get; private set; }
+		public ISphereContainer Container { get; private set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public SphereContainer() {
 			Data = new SphereContainerData();
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
+		protected SphereContainer(SphereContainerData pData) {
+			Data = pData;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
@@ -39,14 +44,14 @@ namespace RadiUX.Unity.Sphere {
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected virtual void FindParentsIfNecessary() {
-			if ( Application.isPlaying && vLayout != null ) {
+			if ( Application.isPlaying && Layout != null ) {
 				return;
 			}
 
-			vLayout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
-			vContain = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
+			Layout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
+			Container = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
 
-			Data.Parent = (vContain == null ? null : vContain.Data);
+			Data.Parent = (Container == null ? null : Container.Data);
 		}
 
 
@@ -55,13 +60,13 @@ namespace RadiUX.Unity.Sphere {
 		public virtual void Update() {
 			FindParentsIfNecessary();
 
-			if ( vLayout == null && !IsLayout() ) {
+			if ( Layout == null && !IsLayout() ) {
 				throw new Exception("This element must be contained within an ISphereLayout.");
 			}
 
-			Data.Center.X = CenterX;
-			Data.Center.Y = CenterY;
-			Data.Center.Z = CenterZ;
+			Data.Center.X = Center.x;
+			Data.Center.Y = Center.y;
+			Data.Center.Z = Center.z;
 		}
 
 	}

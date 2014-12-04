@@ -7,27 +7,25 @@ namespace RadiUX.Unity.Sphere {
 	[CustomEditor(typeof(SphereSegment))]
 	public class SphereSegmentEditor : Editor {
 
-		private SphereSegment vItem;
+		private SphereSegment vSeg;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual void OnEnable() {
-			vItem = (SphereSegment)target;
+			vSeg = (SphereSegment)target;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
-			Undo.RecordObject(vItem, vItem.GetType().Name);
+			Undo.RecordObject(vSeg, vSeg.GetType().Name);
 
-			vItem.CenterX = EditorGUILayout.Slider("Center X", vItem.CenterX, -180f, 180f);
-			vItem.CenterY = EditorGUILayout.Slider("Center Y", vItem.CenterY, -180f, 180f);
-			vItem.CenterZ = EditorGUILayout.Slider("Center Z", vItem.CenterZ, -10f, 10f);
-			vItem.Width = EditorGUILayout.Slider("Width", vItem.Width, 0.1f, 360f);
-			vItem.Height = EditorGUILayout.Slider("Height", vItem.Height, 0.1f, 180f);
+			vSeg.Center = EditorGUILayout.Vector3Field("Center", vSeg.Center);
+			vSeg.Width = EditorGUILayout.Slider("Width", vSeg.Width, 0.1f, 360f);
+			vSeg.Height = EditorGUILayout.Slider("Height", vSeg.Height, 0.1f, 180f);
 
 			if ( GUI.changed ) {
-				EditorUtility.SetDirty(vItem);
+				EditorUtility.SetDirty(vSeg);
 			}
 		}
 
