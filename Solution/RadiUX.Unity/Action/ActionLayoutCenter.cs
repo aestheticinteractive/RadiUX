@@ -6,7 +6,7 @@ using UnityEngine;
 namespace RadiUX.Unity.Action {
 
 	/*================================================================================================*/
-	public class ActionSpinLayout : ActionBase {
+	public class ActionLayoutCenter : ActionBase {
 
 		public Vector3 Center;
 		public bool IsRelativeChange;
