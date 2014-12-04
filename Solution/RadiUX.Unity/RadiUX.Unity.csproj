@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Action\ActionBase.cs" />
     <Compile Include="Action\ActionSpinLayout.cs" />
+    <Compile Include="Action\ActionLayoutRotation.cs" />
     <Compile Include="Action\IActionBase.cs" />
     <Compile Include="Sphere\ISphereSegment.cs" />
     <Compile Include="Sphere\SphereButtonEditor.cs" />
