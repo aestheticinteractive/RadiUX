@@ -1,11 +1,11 @@
 ﻿using RadiUX.Model.Sphere;
 
-namespace RadiUX.Unity.Demo {
+namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
-	public interface ISphereContainer {
+	public interface ISphereLayout {
 
-		SphereContainerData Data { get; }
+		SphereLayoutData Data { get; }
 
 	}
 

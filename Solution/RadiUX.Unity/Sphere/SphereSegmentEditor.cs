@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace RadiUX.Unity.Demo {
+namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
 	[CustomEditor(typeof(SphereSegment))]

@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace RadiUX.Unity.Demo {
+namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
 	[CustomEditor(typeof(SphereButton))]
