@@ -44,6 +44,7 @@
     <Compile Include="Action\ActionLayoutCenter.cs" />
     <Compile Include="Action\ActionLayoutRotation.cs" />
     <Compile Include="Action\IActionBase.cs" />
+    <Compile Include="Demo\TerrainDemo.cs" />
     <Compile Include="Sphere\ISphereSegment.cs" />
     <Compile Include="Sphere\SphereButtonEditor.cs" />
     <Compile Include="Sphere\SphereButton.cs" />

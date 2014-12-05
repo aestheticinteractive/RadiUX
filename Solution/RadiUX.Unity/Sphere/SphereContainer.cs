@@ -10,9 +10,6 @@ namespace RadiUX.Unity.Sphere {
 	public class SphereContainer : MonoBehaviour, ISphereContainer {
 
 		public Vector3 Center;
-		public float CenterX;
-		public float CenterY;
-		public float CenterZ;
 
 		public SphereContainerData Data { get; private set; }
 		public ISphereLayout Layout { get; private set; }

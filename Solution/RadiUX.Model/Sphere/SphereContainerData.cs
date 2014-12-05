@@ -3,7 +3,7 @@
 namespace RadiUX.Model.Sphere {
 
 	/*================================================================================================*/
-	public class SphereContainerData {
+	public class SphereContainerData : SphereElementData {
 
 		public SphereContainerData Parent { get; set; }
 		public Vec3 Center { get; set; }

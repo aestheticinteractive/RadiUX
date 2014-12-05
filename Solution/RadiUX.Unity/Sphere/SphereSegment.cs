@@ -30,7 +30,7 @@ namespace RadiUX.Unity.Sphere {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public virtual void Start() {
+		public virtual void Awake() {
 			MeshFilter meshFilt = gameObject.GetComponent<MeshFilter>();
 
 			if ( meshFilt == null ) {
@@ -45,6 +45,11 @@ namespace RadiUX.Unity.Sphere {
 			vMesh.hideFlags = HideFlags.DontSave;
 			meshFilt.sharedMesh = vMesh;
 
+			FindParentsIfNecessary();
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public virtual void Start() {
 			FindParentsIfNecessary();
 		}
 

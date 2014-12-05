@@ -4,7 +4,7 @@ using RadiUX.Model.Structures;
 namespace RadiUX.Model.Sphere {
 
 	/*================================================================================================*/
-	public class SphereSegmentData {
+	public class SphereSegmentData : SphereElementData {
 
 		public DegreeBounds Bounds { get; set; }
 		public SphereLayoutData Layout { get; set; }
