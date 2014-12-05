@@ -5,30 +5,24 @@ using UnityEngine;
 namespace RadiUX.Unity.Action {
 
 	/*================================================================================================*/
-	public class ActionLayoutCenter : ActionAnimBase<Vector3> {
+	public class ActionElementCenter : ActionAnimBase<Vector3> {
 
+		public GameObject Element;
 		public Vector3 Center;
 
+		private SphereContainer vContain;
+
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		protected override void HandleActiveEvent() {
-			ISphereLayout layout = GetLayout();
-
-			if ( layout.IsSpinning ) {
-				return;
-			}
-
-			base.HandleActiveEvent();
+		public override void Update() {
+			base.Update();
+			vContain = UnityUtil.FindSiblingComponent<SphereContainer>(Element);
 		}
 
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		protected override void UpdateWithAnimValue(Vector3 pValue) {
-			ISphereLayout layout = GetLayout();
-			layout.SetCenter(pValue);
-			layout.IsSpinning = vAnim.Active;
+			vContain.Center = pValue;
 		}
 
 
@@ -40,19 +34,12 @@ namespace RadiUX.Unity.Action {
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected override Vector3 GetAnimFromValue() {
-			return GetLayout().Data.Center.ToUnityVector();
+			return vContain.Center;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected override Vector3 GetAnimToValue(Vector3 pFromValue) {
 			return Center+(IsRelativeChange ? pFromValue : Vector3.zero);
-		}
-
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		private ISphereLayout GetLayout() {
-			return (Segment != null ? Segment.Layout : Container.Layout);
 		}
 
 	}

@@ -43,6 +43,8 @@
     <Compile Include="Action\ActionBase.cs" />
     <Compile Include="Action\ActionLayoutCenter.cs" />
     <Compile Include="Action\ActionLayoutRotation.cs" />
+    <Compile Include="Action\ActionElementCenter.cs" />
+    <Compile Include="Action\ActionAnimBase.cs" />
     <Compile Include="Action\IActionBase.cs" />
     <Compile Include="Demo\TerrainDemo.cs" />
     <Compile Include="Sphere\ISphereSegment.cs" />
