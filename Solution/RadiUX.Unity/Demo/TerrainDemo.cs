@@ -35,10 +35,6 @@ namespace RadiUX.Unity.Demo {
 			vHeadObj = BuildHead(gameObject);
 			vLayoutObj = BuildLayout(vHeadObj);
 			vPanelList = BuildFourPanels(vLayoutObj);
-
-			var p0 = vPanelList[0];
-			var cont = p0.GetComponent<SphereContainer>();
-			UnityEngine.Debug.Log("TEST "+cont.GetCenter()+" / "+cont.Data.Center+" / "+cont.Data.ParentContainer);
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
@@ -141,15 +137,15 @@ namespace RadiUX.Unity.Demo {
 		private static IList<GameObject> BuildFourPanels(GameObject pParent) {
 			var list = new List<GameObject>();
 
-			for ( int i = 0 ; i < 1 ; ++i ) {
+			for ( int i = 0 ; i < 4 ; ++i ) {
 				var panelObj = BuildPanel(pParent, i*90);
 
-				/*BuildNavButton(panelObj, true);
+				BuildNavButton(panelObj, true);
 				BuildNavButton(panelObj, false);
 
 				for ( int j = 0 ; j <= i ; ++j ) {
 					BuildSegment(panelObj, (j-i/2f)*6);
-				}*/
+				}
 
 				list.Add(panelObj);
 			}

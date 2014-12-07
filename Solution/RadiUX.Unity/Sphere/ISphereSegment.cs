@@ -3,7 +3,7 @@
 namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
-	public interface ISphereSegment : ISphereElement<SphereSegmentData> {
+	public interface ISphereSegment : ISphereElement<Segment> {
 
 	}
 

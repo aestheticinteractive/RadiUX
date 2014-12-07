@@ -7,18 +7,9 @@ namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereContainer : SphereElement<SphereContainerData>, ISphereContainer {
+	public class SphereContainer : SphereElement<Container>, ISphereContainer {
 
 
-	}
-
-
-	/*================================================================================================*/
-	[ExecuteInEditMode]
-	public abstract class SphereContainer<T> : SphereElement<T>, ISphereContainer<T>
-																where T : SphereContainerData, new() {
-		
-		
 	}
 
 }

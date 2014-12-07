@@ -29,10 +29,10 @@ namespace RadiUX.Model.Sphere.Components {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public static Transform Apply(Transform pInheritedPosition, Transform pPosition) {
+		public static Transform Apply(Transform pInheritedTransform, Transform pTransform) {
 			var p = new Transform();
-			p.Center = pInheritedPosition.Center+pPosition.Center;
-			p.Scale = pInheritedPosition.Scale+pPosition.Scale;
+			p.Center = pInheritedTransform.Center+pTransform.Center;
+			p.Scale = pInheritedTransform.Scale+pTransform.Scale;
 			return p;
 		}
 

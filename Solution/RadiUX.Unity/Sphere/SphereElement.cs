@@ -3,20 +3,37 @@ using RadiUX.Model.Sphere;
 using RadiUX.Model.Structures;
 using RadiUX.Unity.Util;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RadiUX.Unity.Sphere {
 	
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public abstract class SphereElement : MonoBehaviour, ISphereElement {
+	public abstract class SphereElement : MonoBehaviour {
 
 		public Vector3 Center;
+		
+	}
 
-		public bool IsSpinning { get; set; }
+
+	/*================================================================================================*/
+	[ExecuteInEditMode]
+	public abstract class SphereElement<T> : SphereElement, ISphereElement<T> where T : Element, new(){
+				
+		public T Data { get; private set; }
 		
-		public ISphereLayout ParentLayout { get; private set; }
-		public ISphereContainer ParentContainer { get; private set; }
 		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		protected SphereElement() {
+			Data = new T();
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		protected SphereElement(T pData) {
+			Data = pData;
+		}
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
@@ -29,78 +46,40 @@ namespace RadiUX.Unity.Sphere {
 			Center = pCenter+Vector3.zero;
 		}
 		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		protected virtual bool FindParentsIfNecessary(bool pRequire) {
-			if ( Application.isPlaying && ParentLayout != null ) {
-				return false;
-			}
-			
-			ParentLayout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
-			ParentContainer = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
-
-			if ( pRequire && ParentLayout == null ) {
-				throw new Exception(typeof(ISphereElement).Name+" must be contained within "+
-					typeof(ISphereLayout).Name+".");
-			}
-			
-			return true;
-		}
-
-	}
-
-
-	/*================================================================================================*/
-	[ExecuteInEditMode]
-	public abstract class SphereElement<T> : SphereElement, ISphereElement<T> 
-																where T : SphereElementData, new() {
-
-		public T Data { get; private set; }
-
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		protected SphereElement() {
-			Data = new T();
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		protected SphereElement(T pData) {
-			Data = pData;
+		public Element GetElementData() {
+			return Data;
 		}
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual void Start() {
-			FindParentsIfNecessary(false);
+			FindChildren();
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual void Update() {
-			Data.Center.X = Center.x;
-			Data.Center.Y = Center.y;
-			Data.Center.Z = Center.z;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public virtual void LateUpdate() {
-			FindParentsIfNecessary(true);
-		}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		protected override bool FindParentsIfNecessary(bool pRequire) {
-			bool found = base.FindParentsIfNecessary(pRequire);
-
-			if ( found ) {
-				Data.ParentLayout = (ParentLayout == null ? null : ParentLayout.Data);
-				Data.ParentContainer = (ParentContainer == null ? null : ParentContainer.Data);
+			if ( !Application.isPlaying ) { //TODO: auto-update if the list of children changes (?)
+				FindChildren();
 			}
 
-			return found;
+			var t = Data.Transform;
+			t.Center = Center.ToRadiuxVector();
+			Data.UpdateTransform(t);
+		}
+
+
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		public virtual void FindChildren() {
+			IList<ISphereElement> children = UnityUtil.FindChildComponents<ISphereElement>(gameObject);
+
+			Data.UpdateChildren(children.Select(x => x.GetElementData()).ToList());
+
+			foreach ( ISphereElement se in children ) {
+				se.FindChildren();
+			}
 		}
 
 	}

@@ -5,7 +5,7 @@ namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereLayout : SphereContainer<SphereLayoutData>, ISphereLayout {
+	public class SphereLayout : SphereElement<Layout>, ISphereLayout {
 
 		public float Radius = 4;
 		public float Quality = 0.3f;
@@ -26,13 +26,6 @@ namespace RadiUX.Unity.Sphere {
 
 			Data.Radius = Radius;
 			Data.Quality = Quality;
-		}
-		
-		
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		protected override bool FindParentsIfNecessary(bool pRequire) {
-			return false;
 		}
 
 	}

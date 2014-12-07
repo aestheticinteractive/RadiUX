@@ -4,7 +4,7 @@ using UnityEngine;
 namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
-	public interface ISphereLayout : ISphereContainer<SphereLayoutData> {
+	public interface ISphereLayout : ISphereElement<Layout> {
 
 	}
 

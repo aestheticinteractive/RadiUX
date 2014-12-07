@@ -8,7 +8,7 @@ namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereSegment : SphereElement<SphereSegmentData>, ISphereSegment {
+	public class SphereSegment : SphereElement<Segment>, ISphereSegment {
 
 		public float Width = 10;
 		public float Height = 10;
@@ -45,9 +45,7 @@ namespace RadiUX.Unity.Sphere {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public override void LateUpdate() {
-			base.LateUpdate();
-
+		public virtual void LateUpdate() {
 			if ( Data.RebuildMeshDataIfNecessary() ) {
 				Data.MeshData.FillUnityMesh(vMesh);
 				AfterMeshUpdate();

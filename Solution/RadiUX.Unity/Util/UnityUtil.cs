@@ -4,6 +4,7 @@ using RadiUX.Model;
 using RadiUX.Model.Structures;
 using UnityEngine;
 using Mesh = UnityEngine.Mesh;
+using System.Collections.Generic;
 
 namespace RadiUX.Unity.Util {
 
@@ -70,6 +71,23 @@ namespace RadiUX.Unity.Util {
 			}
 
 			return default(T);
+		}
+		
+		/*--------------------------------------------------------------------------------------------*/
+		public static IList<T> FindChildComponents<T>(GameObject pGameObj) {
+			var list = new List<T>();
+			int count = pGameObj.transform.childCount;
+
+			for ( int i = 0 ; i < count ; ++i ) {
+				var childTrans = pGameObj.transform.GetChild(i);
+				object comp = childTrans.gameObject.GetComponent(typeof(T));
+
+				if ( comp != null ) {
+					list.Add((T)comp);
+				}
+			}
+
+			return list;
 		}
 
 

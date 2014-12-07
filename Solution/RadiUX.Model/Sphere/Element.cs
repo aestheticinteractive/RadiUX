@@ -1,4 +1,4 @@
-﻿using RadiUX.Model.Sphere.Components;
+using RadiUX.Model.Sphere.Components;
 using RadiUX.Model.Structures;
 using System.Collections.Generic;
 
@@ -26,9 +26,9 @@ namespace RadiUX.Model.Sphere {
 			state.Still = true;
 			State = state;
 
-			var pos = new Transform();
-			pos.Center = new Vec3();
-			Transform = pos;
+			var trans = new Transform();
+			trans.Center = new Vec3();
+			Transform = trans;
 
 			Children = new List<Element>();
 		}
@@ -36,15 +36,22 @@ namespace RadiUX.Model.Sphere {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
+		public void UpdateChildren(IList<Element> pChildren) {
+			Children = pChildren;
+			SendInheritedState();
+			SendInheritedTransform();
+		}
+
+		/*--------------------------------------------------------------------------------------------*/
 		public void UpdateState(State pState) {
 			State = pState;
 			SendInheritedState();
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		public void UpdatePosition(Transform pPosition) {
-			Transform = pPosition;
-			SendInheritedPosition();
+		public void UpdateTransform(Transform pTransform) {
+			Transform = pTransform;
+			SendInheritedTransform();
 		}
 
 
@@ -60,12 +67,12 @@ namespace RadiUX.Model.Sphere {
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
-		internal void SendInheritedPosition() {
-			Transform pos = Transform.Apply(InheritedTransform, Transform);
+		internal void SendInheritedTransform() {
+			Transform trans = Transform.Apply(InheritedTransform, Transform);
 			
 			foreach ( Element e in Children ) {
-				e.InheritedTransform = pos;
-				e.SendInheritedPosition();
+				e.InheritedTransform = trans;
+				e.SendInheritedTransform();
 			}
 		}
 
