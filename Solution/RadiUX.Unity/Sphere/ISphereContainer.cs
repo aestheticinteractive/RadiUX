@@ -3,13 +3,13 @@
 namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
-	public interface ISphereContainer : ISphereElement<SphereContainerData> {
+	public interface ISphereContainer {
 
 	}
 
 	
 	/*================================================================================================*/
-	public interface ISphereContainer<T> : ISphereElement<T> {
+	public interface ISphereContainer<T> : ISphereContainer, ISphereElement<T> {
 		
 	}
 

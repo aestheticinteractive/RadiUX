@@ -1,10 +1,12 @@
-﻿using System;
-using RadiUX.Model.Structures;
+﻿using RadiUX.Model.Structures;
+using RadiUX.Model.Sphere.Components;
+using System;
+using System.Collections.Generic;
 
 namespace RadiUX.Model.Sphere {
 
 	/*================================================================================================*/
-	public class SphereLayoutData : SphereContainerData {
+	public class Layout : Element {
 
 		public float Radius { get; set; }
 		public float Quality { get; set; }
@@ -12,16 +14,12 @@ namespace RadiUX.Model.Sphere {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public SphereLayoutData() {
+		public Layout() {
+			Radius = 4;
+			Quality = 0.333f;
 		}
 
-		/*--------------------------------------------------------------------------------------------*/
-		public SphereLayoutData(float pRadius, float pQuality) {
-			Radius = pRadius;
-			Quality = pQuality;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
+		/*--------------------------------------------------------------------------------------------* /
 		internal override string GetState() {
 			return Radius+","+Quality+","+base.GetState();
 		}

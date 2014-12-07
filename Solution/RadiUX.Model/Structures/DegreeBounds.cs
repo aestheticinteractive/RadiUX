@@ -18,14 +18,14 @@ namespace RadiUX.Model.Structures {
 
 		/*--------------------------------------------------------------------------------------------*/
 		public DegreeBounds(Vec3 pCenter, float pWidth, float pHeight) {
-			Center = pCenter.Clone();
+			Center = pCenter;
 			Width = pWidth;
 			Height = pHeight;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public DegreeBounds(DegreeBounds pBounds) {
-			Center = pBounds.Center.Clone();
+			Center = pBounds.Center;
 			Width = pBounds.Width;
 			Height = pBounds.Height;
 		}
@@ -63,7 +63,7 @@ namespace RadiUX.Model.Structures {
 		/*--------------------------------------------------------------------------------------------*/
 		public DegreeBounds NewResized(float pWidth, float pHeight) {
 			return new DegreeBounds(
-				Center.Clone(),
+				Center,
 				pWidth,
 				pHeight
 			);

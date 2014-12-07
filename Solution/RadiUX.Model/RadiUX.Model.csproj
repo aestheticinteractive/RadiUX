@@ -40,16 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sphere\SphereElementData.cs" />
-    <Compile Include="Sphere\SphereContainerData.cs" />
     <Compile Include="Structures\Anim.cs" />
     <Compile Include="Structures\DegreeBounds.cs" />
-    <Compile Include="Sphere\SphereLayoutData.cs" />
-    <Compile Include="Sphere\SphereSegmentData.cs" />
     <Compile Include="Structures\Vec2.cs" />
     <Compile Include="Structures\Vec3.cs" />
     <Compile Include="Structures\MeshData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sphere\Components\State.cs" />
+    <Compile Include="Sphere\Layout.cs" />
+    <Compile Include="Sphere\Container.cs" />
+    <Compile Include="Sphere\Segment.cs" />
+    <Compile Include="Sphere\Element.cs" />
+    <Compile Include="Sphere\Components\Transform.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
@@ -63,4 +65,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Sphere\Components\" />
+  </ItemGroup>
 </Project>

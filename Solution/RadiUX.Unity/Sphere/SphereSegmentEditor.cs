@@ -12,7 +12,8 @@ namespace RadiUX.Unity.Sphere {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public virtual void OnEnable() {
+		public override void OnEnable() {
+			base.OnEnable();
 			vSeg = (SphereSegment)target;
 		}
 

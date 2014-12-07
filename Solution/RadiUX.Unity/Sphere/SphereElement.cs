@@ -39,7 +39,7 @@ namespace RadiUX.Unity.Sphere {
 			
 			ParentLayout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
 			ParentContainer = UnityUtil.FindParentComponent<ISphereContainer>(gameObject);
-			
+
 			if ( pRequire && ParentLayout == null ) {
 				throw new Exception(typeof(ISphereElement).Name+" must be contained within "+
 					typeof(ISphereLayout).Name+".");
