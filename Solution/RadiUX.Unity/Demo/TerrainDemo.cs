@@ -115,7 +115,7 @@ namespace RadiUX.Unity.Demo {
 			var cameraObj = new GameObject("Camera");
 			cameraObj.transform.parent = headObj.transform;
 
-			var camera = cameraObj.AddComponent<Camera>();
+			cameraObj.AddComponent<Camera>();
 
 			return headObj;
 		}

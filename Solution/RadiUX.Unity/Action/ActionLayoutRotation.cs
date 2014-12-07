@@ -1,4 +1,4 @@
-﻿using RadiUX.Unity.Sphere;
+using RadiUX.Unity.Sphere;
 using UnityEngine;
 
 namespace RadiUX.Unity.Action {
@@ -51,7 +51,7 @@ namespace RadiUX.Unity.Action {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		private ISphereLayout GetLayout() {
-			return (Segment != null ? Segment.Layout : Container.Layout);
+			return (Segment != null ? Segment.ParentLayout : Container.ParentLayout);
 		}
 
 	}

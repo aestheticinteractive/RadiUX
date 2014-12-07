@@ -32,6 +32,8 @@ namespace RadiUX.Unity.Sphere {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public override void Update() {
+			base.Update();
+
 			if ( vColorAnim.Active ) {
 				renderer.material.color = vColorAnim.GetProgressValue();
 			}

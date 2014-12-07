@@ -7,22 +7,22 @@ namespace RadiUX.Unity.Action {
 	/*================================================================================================*/
 	public class ActionElementCenter : ActionAnimBase<Vector3> {
 
-		public GameObject Element;
+		public GameObject TargetElement;
 		public Vector3 Center;
 
-		private SphereContainer vContain;
+		private ISphereElement vElement;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public override void Update() {
 			base.Update();
-			vContain = UnityUtil.FindSiblingComponent<SphereContainer>(Element);
+			vElement = UnityUtil.FindSiblingComponent<ISphereElement>(TargetElement);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected override void UpdateWithAnimValue(Vector3 pValue) {
-			vContain.Center = pValue;
+			vElement.SetCenter(pValue);
 		}
 
 
@@ -34,7 +34,7 @@ namespace RadiUX.Unity.Action {
 
 		/*--------------------------------------------------------------------------------------------*/
 		protected override Vector3 GetAnimFromValue() {
-			return vContain.Center;
+			return vElement.GetCenter();
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

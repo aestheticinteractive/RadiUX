@@ -4,29 +4,26 @@ using UnityEngine;
 namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
-	[CustomEditor(typeof(SphereSegment))]
-	public class SphereSegmentEditor : SphereElementEditor {
+	[CustomEditor(typeof(SphereContainer))]
+	public class SphereElementEditor : Editor {
 
-		private SphereSegment vSeg;
+		private SphereElement vElem;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual void OnEnable() {
-			vSeg = (SphereSegment)target;
+			vElem = (SphereElement)target;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
-			base.OnInspectorGUI();
+			Undo.RecordObject(vElem, vElem.GetType().Name);
 
-			Undo.RecordObject(vSeg, vSeg.GetType().Name);
-
-			vSeg.Width = EditorGUILayout.Slider("Width", vSeg.Width, 0.1f, 360f);
-			vSeg.Height = EditorGUILayout.Slider("Height", vSeg.Height, 0.1f, 180f);
+			vElem.Center = EditorGUILayout.Vector3Field("Center", vElem.Center);
 
 			if ( GUI.changed ) {
-				EditorUtility.SetDirty(vSeg);
+				EditorUtility.SetDirty(vElem);
 			}
 		}
 

@@ -1,27 +1,33 @@
-﻿using UnityEditor;
+using RadiUX.Model.Sphere;
 using UnityEngine;
 
 namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
-	[CustomEditor(typeof(SphereContainer))]
-	public class SphereContainerEditor : SphereElementEditor {
+	public interface ISphereElement {
 
-		//private SphereContainer vContain;
-
-
+		bool IsSpinning { get; set; }
+		
+		ISphereLayout ParentLayout { get; }
+		ISphereContainer ParentContainer { get; }
+		
+		
+		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public override void OnEnable() {
-			base.OnEnable();
-			//vContain = (SphereContainer)target;
-		}
-		
-		/*--------------------------------------------------------------------------------------------*/
-		public override void OnInspectorGUI() {
-			base.OnInspectorGUI();
-		}
+		Vector3 GetCenter();
 
+		/*--------------------------------------------------------------------------------------------*/
+		void SetCenter(Vector3 pCenter);
+
+	}
+
+	
+	/*================================================================================================*/
+	public interface ISphereElement<T> : ISphereElement {
+		
+		T Data { get; }
+		
 	}
 
 }

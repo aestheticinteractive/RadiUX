@@ -5,42 +5,17 @@ namespace RadiUX.Unity.Sphere {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereLayout : SphereContainer, ISphereLayout {
+	public class SphereLayout : SphereContainer<SphereLayoutData>, ISphereLayout {
 
 		public float Radius = 4;
 		public float Quality = 0.3f;
 
-		public new SphereLayoutData Data {
-			get {
-				return (SphereLayoutData)base.Data;
-			}
-		}
-
-		public bool IsSpinning { get; set; }
-
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public SphereLayout() : base(new SphereLayoutData(0, 0)) {
+		public SphereLayout() {
 			Data.Radius = Radius;
 			Data.Quality = Quality;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		public void SetCenter(Vector3 pCenter) {
-			Center = pCenter;
-		}
-
-
-		////////////////////////////////////////////////////////////////////////////////////////////////
-		/*--------------------------------------------------------------------------------------------*/
-		protected override bool IsLayout() {
-			return true;
-		}
-
-		/*--------------------------------------------------------------------------------------------*/
-		protected override void FindParentsIfNecessary() {
-			//do nothing
 		}
 
 
@@ -48,8 +23,16 @@ namespace RadiUX.Unity.Sphere {
 		/*--------------------------------------------------------------------------------------------*/
 		public override void Update() {
 			base.Update();
+
 			Data.Radius = Radius;
 			Data.Quality = Quality;
+		}
+		
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		/*--------------------------------------------------------------------------------------------*/
+		protected override bool FindParentsIfNecessary(bool pRequire) {
+			return false;
 		}
 
 	}

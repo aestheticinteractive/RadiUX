@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using RadiUX.Model.Structures;
 
 namespace RadiUX.Model.Sphere {
@@ -6,9 +6,8 @@ namespace RadiUX.Model.Sphere {
 	/*================================================================================================*/
 	public class SphereSegmentData : SphereElementData {
 
-		public DegreeBounds Bounds { get; set; }
-		public SphereLayoutData Layout { get; set; }
-		public SphereContainerData Container { get; set; }
+		public float Width { get; set; }
+		public float Height { get; set; }
 		public MeshData MeshData { get; set; }
 
 		private DegreeBounds vCurrBounds;
@@ -18,35 +17,26 @@ namespace RadiUX.Model.Sphere {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public bool RebuildMeshDataIfNecessary() {
-			if ( Bounds == null ) {
-				throw new ArgumentNullException("Bounds");
-			}
-
-			if ( Layout == null ) {
+			if ( ParentLayout == null ) {
 				throw new ArgumentNullException("Layout");
 			}
 
-			string state = Layout.GetState();
+			var bounds = new DegreeBounds(Center, Width, Height);
+			string state = ParentLayout.GetState()+(ParentContainer == null ? "" : "|"+ParentContainer.GetState());
 
-			if ( Container != null ) {
-				state += "|"+Container.GetState();
-			}
-
-			if ( Bounds.IsSameAs(vCurrBounds) && state == vCurrState ) {
+			if ( bounds.IsSameAs(vCurrBounds) && state == vCurrState ) {
 				return false;
 			}
 
-			vCurrBounds = new DegreeBounds(Bounds);
+			vCurrBounds = bounds;
 			vCurrState = state;
 			
-			DegreeBounds b = Bounds;
-
-			if ( Container != null ) {
-				Vec3 cont = Container.CalculateCenter();
-				b = b.NewOffsetCenter(cont);
+			if ( ParentContainer != null ) {
+				Vec3 cont = ParentContainer.CalculateCenter();
+				bounds = bounds.NewOffsetCenter(cont);
 			}
 
-			MeshData = Layout.GetSquare(b);
+			MeshData = ParentLayout.GetSquare(bounds);
 			return true;
 		}
 
