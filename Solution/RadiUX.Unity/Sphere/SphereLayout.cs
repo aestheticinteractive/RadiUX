@@ -7,15 +7,14 @@ namespace RadiUX.Unity.Sphere {
 	[ExecuteInEditMode]
 	public class SphereLayout : SphereElement<Layout>, ISphereLayout {
 
-		public float Radius = 4;
-		public float Quality = 0.3f;
+		//public float Radius = 4;
+		//public float Quality = 0.3f;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public SphereLayout() {
-			Data.Radius = Radius;
-			Data.Quality = Quality;
+			Center.z = Data.Transform.Center.Z;
 		}
 
 
@@ -24,8 +23,8 @@ namespace RadiUX.Unity.Sphere {
 		public override void Update() {
 			base.Update();
 
-			Data.Radius = Radius;
-			Data.Quality = Quality;
+			//Data.Radius = Radius;
+			//Data.Quality = Quality;
 		}
 
 	}

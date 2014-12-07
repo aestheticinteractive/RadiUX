@@ -23,8 +23,8 @@ namespace RadiUX.Unity.Sphere {
 
 			Undo.RecordObject(vLayout, vLayout.GetType().Name);
 
-			vLayout.Radius = EditorGUILayout.Slider("Radius", vLayout.Radius, 1f, 10f);
-			vLayout.Quality = EditorGUILayout.Slider("Quality", vLayout.Quality, 0.1f, 2f);
+			//vLayout.Radius = EditorGUILayout.Slider("Radius", vLayout.Radius, 1f, 10f);
+			//vLayout.Quality = EditorGUILayout.Slider("Quality", vLayout.Quality, 0.1f, 2f);
 
 			if ( GUI.changed ) {
 				EditorUtility.SetDirty(vLayout);
