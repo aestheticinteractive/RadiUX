@@ -3,7 +3,7 @@ using RadiUX.Unity.Elements;
 using RadiUX.Unity.Util;
 using UnityEngine;
 
-namespace RadiUX.Unity.Action {
+namespace RadiUX.Unity.Actions {
 
 	/*================================================================================================*/
 	public class ActionBase : MonoBehaviour {

@@ -1,6 +1,6 @@
 ﻿using RadiUX.Unity.Elements;
 
-namespace RadiUX.Unity.Action {
+namespace RadiUX.Unity.Actions {
 
 	/*================================================================================================*/
 	public interface IActionBase {

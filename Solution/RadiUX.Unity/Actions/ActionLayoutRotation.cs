@@ -4,7 +4,7 @@ using RadiUX.Unity.Util;
 using System;
 using UnityEngine;
 
-namespace RadiUX.Unity.Action {
+namespace RadiUX.Unity.Actions {
 
 	/*================================================================================================*/
 	public class ActionLayoutRotation : ActionAnimBase<Quaternion> {

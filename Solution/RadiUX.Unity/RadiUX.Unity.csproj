@@ -45,30 +45,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action\ActionBase.cs" />
-    <Compile Include="Action\ActionLayoutRotation.cs" />
-    <Compile Include="Action\ActionElementCenter.cs" />
-    <Compile Include="Action\ActionAnimBase.cs" />
-    <Compile Include="Action\IActionBase.cs" />
     <Compile Include="Demo\TerrainDemo.cs" />
     <Compile Include="RadiuxBehavior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\MathUtil.cs" />
     <Compile Include="Util\UnityUtil.cs" />
     <Compile Include="Elements\ISphereSegment.cs" />
-    <Compile Include="Elements\SphereButtonEditor.cs" />
     <Compile Include="Elements\SphereButton.cs" />
-    <Compile Include="Elements\SphereContainerEditor.cs" />
     <Compile Include="Elements\ISphereContainer.cs" />
     <Compile Include="Elements\SphereContainer.cs" />
-    <Compile Include="Elements\SphereLayoutEditor.cs" />
     <Compile Include="Elements\ISphereLayout.cs" />
     <Compile Include="Elements\SphereSegment.cs" />
-    <Compile Include="Elements\SphereSegmentEditor.cs" />
     <Compile Include="Elements\SphereLayout.cs" />
     <Compile Include="Elements\SphereElement.cs" />
     <Compile Include="Elements\ISphereElement.cs" />
-    <Compile Include="Elements\SphereElementEditor.cs" />
+    <Compile Include="Editors\Elements\SphereButtonEditor.cs" />
+    <Compile Include="Editors\Elements\SphereContainerEditor.cs" />
+    <Compile Include="Editors\Elements\SphereElementEditor.cs" />
+    <Compile Include="Editors\Elements\SphereLayoutEditor.cs" />
+    <Compile Include="Editors\Elements\SphereSegmentEditor.cs" />
+    <Compile Include="Actions\ActionBase.cs" />
+    <Compile Include="Actions\ActionLayoutRotation.cs" />
+    <Compile Include="Actions\ActionElementCenter.cs" />
+    <Compile Include="Actions\ActionAnimBase.cs" />
+    <Compile Include="Actions\IActionBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RadiUX.Model\RadiUX.Model.csproj">
@@ -88,4 +88,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Editors\" />
+    <Folder Include="Editors\Elements\" />
+  </ItemGroup>
 </Project>

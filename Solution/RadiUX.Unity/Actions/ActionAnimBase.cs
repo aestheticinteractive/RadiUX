@@ -1,6 +1,6 @@
 ﻿using RadiUX.Model.Structures;
 
-namespace RadiUX.Unity.Action {
+namespace RadiUX.Unity.Actions {
 
 	/*================================================================================================*/
 	public abstract class ActionAnimBase<T> : ActionBase {

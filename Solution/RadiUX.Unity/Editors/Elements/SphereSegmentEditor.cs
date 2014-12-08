@@ -1,33 +1,34 @@
-﻿using UnityEditor;
+﻿using RadiUX.Unity.Elements;
+using UnityEditor;
 using UnityEngine;
 
-namespace RadiUX.Unity.Elements {
+namespace RadiUX.Unity.Editors.Elements {
 
 	/*================================================================================================*/
-	[CustomEditor(typeof(SphereLayout))]
-	public class SphereLayoutEditor : SphereContainerEditor {
+	[CustomEditor(typeof(SphereSegment))]
+	public class SphereSegmentEditor : SphereElementEditor {
 
-		private SphereLayout vLayout;
+		private SphereSegment vSeg;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnEnable() {
 			base.OnEnable();
-			vLayout = (SphereLayout)target;
+			vSeg = (SphereSegment)target;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
 			base.OnInspectorGUI();
 
-			Undo.RecordObject(vLayout, vLayout.GetType().Name);
+			Undo.RecordObject(vSeg, vSeg.GetType().Name);
 
-			//vLayout.Radius = EditorGUILayout.Slider("Radius", vLayout.Radius, 1f, 10f);
-			//vLayout.Quality = EditorGUILayout.Slider("Quality", vLayout.Quality, 0.1f, 2f);
+			vSeg.Width = EditorGUILayout.Slider("Width", vSeg.Width, 0.1f, 360f);
+			vSeg.Height = EditorGUILayout.Slider("Height", vSeg.Height, 0.1f, 180f);
 
 			if ( GUI.changed ) {
-				EditorUtility.SetDirty(vLayout);
+				EditorUtility.SetDirty(vSeg);
 			}
 		}
 
