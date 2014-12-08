@@ -1,24 +1,30 @@
 ﻿using UnityEditor;
+using UnityEngine;
 
-namespace RadiUX.Unity.Sphere {
+namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
-	[CustomEditor(typeof(SphereButton))]
-	public class SphereButtonEditor : SphereSegmentEditor {
+	[CustomEditor(typeof(SphereContainer))]
+	public class SphereElementEditor : Editor {
 
-		//private SphereButton vButton;
+		private SphereElement vElem;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public override void OnEnable() {
-			base.OnEnable();
-			//vButton = (SphereButton)target;
+		public virtual void OnEnable() {
+			vElem = (SphereElement)target;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
-			base.OnInspectorGUI();
+			Undo.RecordObject(vElem, vElem.GetType().Name);
+
+			vElem.Center = EditorGUILayout.Vector3Field("Center", vElem.Center);
+
+			if ( GUI.changed ) {
+				EditorUtility.SetDirty(vElem);
+			}
 		}
 
 	}

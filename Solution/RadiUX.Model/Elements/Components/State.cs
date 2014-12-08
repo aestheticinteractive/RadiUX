@@ -1,6 +1,6 @@
 ﻿using RadiUX.Model.Structures;
 
-namespace RadiUX.Model.Sphere.Components {
+namespace RadiUX.Model.Elements.Components {
 
 	/*================================================================================================*/
 	public struct State {

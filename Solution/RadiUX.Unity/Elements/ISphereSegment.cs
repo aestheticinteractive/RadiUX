@@ -1,6 +1,6 @@
-﻿using RadiUX.Model.Sphere;
+﻿using RadiUX.Model.Elements;
 
-namespace RadiUX.Unity.Sphere {
+namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
 	public interface ISphereSegment : ISphereElement<Segment> {

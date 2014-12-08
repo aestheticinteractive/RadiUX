@@ -1,9 +1,9 @@
 ﻿using RadiUX.Model.Structures;
-using RadiUX.Model.Sphere.Components;
+using RadiUX.Model.Elements.Components;
 using System;
 using System.Collections.Generic;
 
-namespace RadiUX.Model.Sphere {
+namespace RadiUX.Model.Elements {
 
 	/*================================================================================================*/
 	public class Layout : Element {

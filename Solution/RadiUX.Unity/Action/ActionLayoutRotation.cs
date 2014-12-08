@@ -1,5 +1,5 @@
-using RadiUX.Unity.Sphere;
-using RadiUX.Model.Sphere.Components;
+using RadiUX.Unity.Elements;
+using RadiUX.Model.Elements.Components;
 using RadiUX.Unity.Util;
 using System;
 using UnityEngine;

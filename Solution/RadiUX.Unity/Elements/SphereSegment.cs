@@ -1,10 +1,10 @@
 ﻿using System;
-using RadiUX.Model.Sphere;
+using RadiUX.Model.Elements;
 using RadiUX.Model.Structures;
 using RadiUX.Unity.Util;
 using UnityEngine;
 
-namespace RadiUX.Unity.Sphere {
+namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]

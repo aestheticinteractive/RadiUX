@@ -1,8 +1,8 @@
-using RadiUX.Model.Sphere.Components;
+using RadiUX.Model.Elements.Components;
 using RadiUX.Model.Structures;
 using System.Collections.Generic;
 
-namespace RadiUX.Model.Sphere {
+namespace RadiUX.Model.Elements {
 
 	/*================================================================================================*/
 	public abstract class Element {

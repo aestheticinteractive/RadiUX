@@ -1,7 +1,7 @@
-﻿using RadiUX.Model.Sphere;
+﻿using RadiUX.Model.Elements;
 using UnityEngine;
 
-namespace RadiUX.Unity.Sphere {
+namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
