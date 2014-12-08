@@ -1,22 +1,23 @@
-﻿using RadiUX.Unity.Elements;
+using RadiUX.Unity.Elements;
 using UnityEditor;
+using UnityEngine;
 
 namespace RadiUX.Unity.Editors.Elements {
 
 	/*================================================================================================*/
-	[CustomEditor(typeof(SphereButton))]
-	public class SphereButtonEditor : SphereSegmentEditor {
+	[CustomEditor(typeof(RadContainer))]
+	public class RadContainerEditor : RadElementEditor {
 
-		//private SphereButton vButton;
+		//private RadContainer vContain;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnEnable() {
 			base.OnEnable();
-			//vButton = (SphereButton)target;
+			//vContain = (RadContainer)target;
 		}
-
+		
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
 			base.OnInspectorGUI();

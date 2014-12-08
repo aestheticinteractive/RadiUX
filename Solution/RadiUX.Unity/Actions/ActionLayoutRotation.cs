@@ -11,16 +11,16 @@ namespace RadiUX.Unity.Actions {
 
 		public Vector3 Rotation;
 		
-		private ISphereLayout vLayout;
+		private IRadLayout vLayout;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		protected override void HandleActiveEvent() {
-			vLayout = UnityUtil.FindParentComponent<ISphereLayout>(gameObject);
+			vLayout = UnityUtil.FindParentComponent<IRadLayout>(gameObject);
 			
 			if ( vLayout == null ) {
-				throw new Exception("No parent "+typeof(ISphereLayout).Name+" was found.");
+				throw new Exception("No parent "+typeof(IRadLayout).Name+" was found.");
 			}
 
 			if ( !vLayout.Data.State.Still ) {

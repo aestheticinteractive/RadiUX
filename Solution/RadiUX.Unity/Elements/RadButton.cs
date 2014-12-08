@@ -5,14 +5,14 @@ namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereButton : SphereSegment {
+	public class RadButton : RadSegment {
 
 		private readonly Anim<Color> vColorAnim;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public SphereButton() {
+		public RadButton() {
 			vColorAnim = new Anim<Color>(250);
 			vColorAnim.ProgressValueFunc = Color.Lerp;
 		}

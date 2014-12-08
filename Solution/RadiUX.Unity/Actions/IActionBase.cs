@@ -1,13 +1,13 @@
-﻿using RadiUX.Unity.Elements;
+using RadiUX.Unity.Elements;
 
 namespace RadiUX.Unity.Actions {
 
 	/*================================================================================================*/
 	public interface IActionBase {
 
-		ISphereSegment Segment { get; }
-		ISphereContainer Container { get;  }
-		ISphereLayout Layout { get; }
+		IRadSegment Segment { get; }
+		IRadContainer Container { get;  }
+		IRadLayout Layout { get; }
 
 	}
 

@@ -1,10 +1,11 @@
-﻿using RadiUX.Model.Elements;
+using RadiUX.Model.Elements;
+using UnityEngine;
 
 namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
-	public interface ISphereContainer : ISphereElement<Container> {
-		
+	public interface IRadLayout : IRadElement<Layout> {
+
 	}
 
 }

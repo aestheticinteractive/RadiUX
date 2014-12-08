@@ -1,9 +1,9 @@
-﻿using RadiUX.Model.Elements;
+using RadiUX.Model.Elements;
 
 namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
-	public interface ISphereSegment : ISphereElement<Segment> {
+	public interface IRadSegment : IRadElement<Segment> {
 
 	}
 

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
-	public interface ISphereElement {
+	public interface IRadElement {
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -26,7 +26,7 @@ namespace RadiUX.Unity.Elements {
 
 	
 	/*================================================================================================*/
-	public interface ISphereElement<T> : ISphereElement where T : Element, new() {
+	public interface IRadElement<T> : IRadElement where T : Element, new() {
 		
 		T Data { get; }
 		

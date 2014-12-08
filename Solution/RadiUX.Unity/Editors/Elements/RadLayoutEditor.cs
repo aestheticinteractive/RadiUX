@@ -5,30 +5,30 @@ using UnityEngine;
 namespace RadiUX.Unity.Editors.Elements {
 
 	/*================================================================================================*/
-	[CustomEditor(typeof(SphereSegment))]
-	public class SphereSegmentEditor : SphereElementEditor {
+	[CustomEditor(typeof(RadLayout))]
+	public class RadLayoutEditor : RadElementEditor {
 
-		private SphereSegment vSeg;
+		private RadLayout vLayout;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnEnable() {
 			base.OnEnable();
-			vSeg = (SphereSegment)target;
+			vLayout = (RadLayout)target;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
 			base.OnInspectorGUI();
 
-			Undo.RecordObject(vSeg, vSeg.GetType().Name);
+			Undo.RecordObject(vLayout, vLayout.GetType().Name);
 
-			vSeg.Width = EditorGUILayout.Slider("Width", vSeg.Width, 0.1f, 360f);
-			vSeg.Height = EditorGUILayout.Slider("Height", vSeg.Height, 0.1f, 180f);
+			//vLayout.Radius = EditorGUILayout.Slider("Radius", vLayout.Radius, 1f, 10f);
+			//vLayout.Quality = EditorGUILayout.Slider("Quality", vLayout.Quality, 0.1f, 2f);
 
 			if ( GUI.changed ) {
-				EditorUtility.SetDirty(vSeg);
+				EditorUtility.SetDirty(vLayout);
 			}
 		}
 

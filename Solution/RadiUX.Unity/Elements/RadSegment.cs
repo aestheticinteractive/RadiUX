@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using RadiUX.Model.Elements;
 using RadiUX.Model.Structures;
 using RadiUX.Unity.Util;
@@ -8,7 +8,7 @@ namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereSegment : SphereElement<Segment>, ISphereSegment {
+	public class RadSegment : RadElement<Segment>, IRadSegment {
 
 		public float Width = 10;
 		public float Height = 10;

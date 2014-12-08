@@ -1,30 +1,34 @@
-﻿using RadiUX.Unity.Elements;
+using RadiUX.Unity.Elements;
 using UnityEditor;
 using UnityEngine;
 
 namespace RadiUX.Unity.Editors.Elements {
 
 	/*================================================================================================*/
-	[CustomEditor(typeof(SphereContainer))]
-	public class SphereElementEditor : Editor {
+	[CustomEditor(typeof(RadSegment))]
+	public class RadSegmentEditor : RadElementEditor {
 
-		private SphereElement vElem;
+		private RadSegment vSeg;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public virtual void OnEnable() {
-			vElem = (SphereElement)target;
+		public override void OnEnable() {
+			base.OnEnable();
+			vSeg = (RadSegment)target;
 		}
 
 		/*--------------------------------------------------------------------------------------------*/
 		public override void OnInspectorGUI() {
-			Undo.RecordObject(vElem, vElem.GetType().Name);
+			base.OnInspectorGUI();
 
-			vElem.Center = EditorGUILayout.Vector3Field("Center", vElem.Center);
+			Undo.RecordObject(vSeg, vSeg.GetType().Name);
+
+			vSeg.Width = EditorGUILayout.Slider("Width", vSeg.Width, 0.1f, 360f);
+			vSeg.Height = EditorGUILayout.Slider("Height", vSeg.Height, 0.1f, 180f);
 
 			if ( GUI.changed ) {
-				EditorUtility.SetDirty(vElem);
+				EditorUtility.SetDirty(vSeg);
 			}
 		}
 

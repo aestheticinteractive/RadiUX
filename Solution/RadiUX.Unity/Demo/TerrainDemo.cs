@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using RadiUX.Model.Structures;
@@ -127,7 +127,7 @@ namespace RadiUX.Unity.Demo {
 			var layoutObj = new GameObject("Layout");
 			layoutObj.transform.parent = pParent.transform;
 
-			SphereLayout layout = layoutObj.AddComponent<SphereLayout>();
+			RadLayout layout = layoutObj.AddComponent<RadLayout>();
 			layout.Center.y = 90;
 
 			return layoutObj;
@@ -158,7 +158,7 @@ namespace RadiUX.Unity.Demo {
 			var panelObj = new GameObject("Panel"+pCenterX);
 			panelObj.transform.parent = pParent.transform;
 
-			SphereContainer cont = panelObj.AddComponent<SphereContainer>();
+			RadContainer cont = panelObj.AddComponent<RadContainer>();
 			cont.Center.x = pCenterX;
 
 			return panelObj;
@@ -169,7 +169,7 @@ namespace RadiUX.Unity.Demo {
 			var buttonObj = new GameObject("Button"+(pIsLeft ? "Left" : "Right"));
 			buttonObj.transform.parent = pParent.transform;
 
-			SphereButton button = buttonObj.AddComponent<SphereButton>();
+			RadButton button = buttonObj.AddComponent<RadButton>();
 			button.Center.x = 36*(pIsLeft ? -1 : 1);
 			button.Width = 10;
 			button.Height = 30;
@@ -192,7 +192,7 @@ namespace RadiUX.Unity.Demo {
 			var segObj = new GameObject("Segment");
 			segObj.transform.parent = pParent.transform;
 			
-			SphereSegment seg = segObj.AddComponent<SphereSegment>();
+			RadSegment seg = segObj.AddComponent<RadSegment>();
 			seg.Center.x = pCenterX;
 			seg.Center.y = -13;
 			seg.Width = 4;

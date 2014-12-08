@@ -1,4 +1,4 @@
-﻿using RadiUX.Unity.Elements;
+using RadiUX.Unity.Elements;
 using RadiUX.Unity.Util;
 using UnityEngine;
 
@@ -10,14 +10,14 @@ namespace RadiUX.Unity.Actions {
 		public GameObject TargetElement;
 		public Vector3 Center;
 
-		private ISphereElement vElement;
+		private IRadElement vElement;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public override void Update() {
 			base.Update();
-			vElement = UnityUtil.FindSiblingComponent<ISphereElement>(TargetElement);
+			vElement = UnityUtil.FindSiblingComponent<IRadElement>(TargetElement);
 		}
 
 		/*--------------------------------------------------------------------------------------------*/

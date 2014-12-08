@@ -1,11 +1,11 @@
-﻿using RadiUX.Model.Elements;
+using RadiUX.Model.Elements;
 using UnityEngine;
 
 namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public class SphereLayout : SphereElement<Layout>, ISphereLayout {
+	public class RadLayout : RadElement<Layout>, IRadLayout {
 
 		//public float Radius = 4;
 		//public float Quality = 0.3f;
@@ -13,7 +13,7 @@ namespace RadiUX.Unity.Elements {
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		public SphereLayout() {
+		public RadLayout() {
 			Center.z = Data.Transform.Center.Z;
 		}
 

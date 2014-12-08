@@ -10,7 +10,7 @@ namespace RadiUX.Unity.Elements {
 	
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public abstract class SphereElement : MonoBehaviour {
+	public abstract class RadElement : MonoBehaviour {
 
 		public Vector3 Center;
 		
@@ -19,22 +19,23 @@ namespace RadiUX.Unity.Elements {
 
 	/*================================================================================================*/
 	[ExecuteInEditMode]
-	public abstract class SphereElement<T> : SphereElement, ISphereElement<T> where T : Element, new(){
+	public abstract class RadElement<T> : RadElement, IRadElement<T> where T : Element, new(){
 				
 		public T Data { get; private set; }
 		
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
-		protected SphereElement() {
+		protected RadElement() {
 			Data = new T();
 		}
 		
 		/*--------------------------------------------------------------------------------------------*/
-		protected SphereElement(T pData) {
+		protected RadElement(T pData) {
 			Data = pData;
 		}
-		
+
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public Vector3 GetCenter() {
@@ -73,11 +74,11 @@ namespace RadiUX.Unity.Elements {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 		/*--------------------------------------------------------------------------------------------*/
 		public virtual void FindChildren() {
-			IList<ISphereElement> children = UnityUtil.FindChildComponents<ISphereElement>(gameObject);
+			IList<IRadElement> children = UnityUtil.FindChildComponents<IRadElement>(gameObject);
 
 			Data.UpdateChildren(children.Select(x => x.GetElementData()).ToList());
 
-			foreach ( ISphereElement se in children ) {
+			foreach ( IRadElement se in children ) {
 				se.FindChildren();
 			}
 		}

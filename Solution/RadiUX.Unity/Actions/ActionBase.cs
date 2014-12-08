@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using RadiUX.Unity.Elements;
 using RadiUX.Unity.Util;
 using UnityEngine;
@@ -19,8 +19,8 @@ namespace RadiUX.Unity.Actions {
 
 		public EventType Event = EventType.Release;
 
-		public ISphereSegment Segment { get; private set; }
-		public ISphereContainer Container { get; private set; }
+		public IRadSegment Segment { get; private set; }
+		public IRadContainer Container { get; private set; }
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -41,8 +41,8 @@ namespace RadiUX.Unity.Actions {
 				return;
 			}
 
-			Segment = UnityUtil.FindSiblingComponent<ISphereSegment>(gameObject);
-			Container = UnityUtil.FindSiblingComponent<ISphereContainer>(gameObject);
+			Segment = UnityUtil.FindSiblingComponent<IRadSegment>(gameObject);
+			Container = UnityUtil.FindSiblingComponent<IRadContainer>(gameObject);
 		}
 
 
