@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadiUX.Unity", "RadiUX.Unit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadiUX.Model", "RadiUX.Model\RadiUX.Model.csproj", "{B64381E5-B598-4336-AEB5-305CA73A3927}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadiUX.Unity.Editors", "RadiUX.Unity.Editors\RadiUX.Unity.Editors.csproj", "{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{B64381E5-B598-4336-AEB5-305CA73A3927}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B64381E5-B598-4336-AEB5-305CA73A3927}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B64381E5-B598-4336-AEB5-305CA73A3927}.Release|x86.ActiveCfg = Release|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1672DB0D-A3B7-4CCF-A2F0-D6446575BDC7}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
