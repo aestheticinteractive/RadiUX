@@ -11,6 +11,7 @@ namespace RadiUX.Unity.Elements {
 
 		private GameObject vCrossHold;
 		private GameObject vCross;
+		private RadButton vCurrButton;
 
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -46,6 +47,8 @@ namespace RadiUX.Unity.Elements {
 		public override void Update() {
 			base.Update();
 
+			bool hitBtn = false;
+
 			if ( vCrossHold != null ) {
 				vCrossHold.transform.position = LookTransform.position;
 				vCrossHold.transform.rotation = LookTransform.rotation;
@@ -55,8 +58,22 @@ namespace RadiUX.Unity.Elements {
 				RaycastHit rayHit;
 
 				if ( Physics.Raycast(ray, out rayHit) ) {
-					Debug.Log("HIT: "+rayHit.collider.gameObject.name);
+					RadButton btn = rayHit.collider.gameObject.GetComponent<RadButton>();
+
+					if ( btn != null ) {
+						hitBtn = true;
+
+						if ( btn != vCurrButton ) {
+							btn.OnMouseEnter();
+							vCurrButton = btn;
+						}
+					}
 				}
+			}
+
+			if ( !hitBtn && vCurrButton != null ) {
+				vCurrButton.OnMouseExit();
+				vCurrButton = null;
 			}
 		}
 
