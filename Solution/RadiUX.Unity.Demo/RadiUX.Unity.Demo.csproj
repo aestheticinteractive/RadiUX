@@ -5,72 +5,57 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B48E4522-77D4-4EB2-873F-6BD29231DB91}</ProjectGuid>
+    <ProjectGuid>{1CAFCAE0-746C-4F7F-BBEC-2D1E24ABFC91}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RadiUX.Unity</RootNamespace>
-    <AssemblyName>RadiUX.Unity</AssemblyName>
+    <RootNamespace>RadiUX.Unity.Demo</RootNamespace>
+    <AssemblyName>RadiUX.Unity.Demo</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>True</DebugSymbols>
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>False</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CustomCommands>
-      <CustomCommands>
-        <Command type="AfterBuild" command="cp ${TargetFile} ${SolutionDir}/../Unity/Assets/Assemblies" workingdir="${ProjectDir}" />
-      </CustomCommands>
-    </CustomCommands>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>True</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\Packages\Unity\UnityEngine.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="FloatAnim.cs" />
+    <Compile Include="Terrain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\MathUtil.cs" />
-    <Compile Include="Util\UnityUtil.cs" />
-    <Compile Include="Actions\ActionBase.cs" />
-    <Compile Include="Actions\ActionLayoutRotation.cs" />
-    <Compile Include="Actions\ActionElementCenter.cs" />
-    <Compile Include="Actions\ActionAnimBase.cs" />
-    <Compile Include="Actions\IActionBase.cs" />
-    <Compile Include="Elements\IRadContainer.cs" />
-    <Compile Include="Elements\IRadSegment.cs" />
-    <Compile Include="Elements\IRadLayout.cs" />
-    <Compile Include="Elements\IRadElement.cs" />
-    <Compile Include="Elements\RadSegment.cs" />
-    <Compile Include="Elements\RadLayout.cs" />
-    <Compile Include="Elements\RadElement.cs" />
-    <Compile Include="Elements\RadContainer.cs" />
-    <Compile Include="Elements\RadButton.cs" />
+    <Compile Include="RadLayoutDemoA.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RadiUX.Model\RadiUX.Model.csproj">
       <Project>{B64381E5-B598-4336-AEB5-305CA73A3927}</Project>
       <Name>RadiUX.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RadiUX.Unity\RadiUX.Unity.csproj">
+      <Project>{B48E4522-77D4-4EB2-873F-6BD29231DB91}</Project>
+      <Name>RadiUX.Unity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\Packages\Unity\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y $(TargetPath) "$(SolutionDir)..\Unity\Assets\Assemblies\"
-copy /Y $(TargetDir)RadiUX.Model.dll "$(SolutionDir)..\Unity\Assets\Assemblies\"
-</PostBuildEvent>
+    <PostBuildEvent>copy /Y $(TargetPath) "$(SolutionDir)..\Unity\Assets\Assemblies\"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -79,5 +64,4 @@ copy /Y $(TargetDir)RadiUX.Model.dll "$(SolutionDir)..\Unity\Assets\Assemblies\"
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
 </Project>
