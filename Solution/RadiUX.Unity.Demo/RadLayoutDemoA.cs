@@ -10,6 +10,8 @@ namespace RadiUX.Unity.Demo {
 	/*================================================================================================*/
 	public class RadLayoutDemoA : MonoBehaviour {
 
+		public Transform LookTransform;
+
 		private IList<GameObject> vPanelList;
 
 
@@ -17,6 +19,7 @@ namespace RadiUX.Unity.Demo {
 		/*--------------------------------------------------------------------------------------------*/
 		public void Awake() {
 			RadLayout layout = gameObject.AddComponent<RadLayout>();
+			layout.LookTransform = LookTransform;
 			layout.Center.y = 90;
 
 			vPanelList = BuildFourPanels(gameObject);
