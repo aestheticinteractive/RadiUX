@@ -42,6 +42,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Elements\RadCrosshair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\MathUtil.cs" />
     <Compile Include="Util\UnityUtil.cs" />
