@@ -21,10 +21,12 @@ namespace RadiUX.Unity.Demo {
 			RadLayout layout = gameObject.AddComponent<RadLayout>();
 			layout.Center.y = 90;
 
-			var crossObj = new GameObject("Crosshair");
-			RadCrosshair cross = crossObj.AddComponent<RadCrosshair>();
-			cross.LookTransform = LookTransform;
-			crossObj.transform.parent = gameObject.transform;
+			if ( LookTransform != null ) {
+				var crossObj = new GameObject("Crosshair");
+				RadCrosshair cross = crossObj.AddComponent<RadCrosshair>();
+				cross.LookTransform = LookTransform;
+				crossObj.transform.parent = gameObject.transform;
+			}
 
 			vPanelList = BuildFourPanels(gameObject);
 		}
